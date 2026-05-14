@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { flavors } from '../data/flavors'
 import styles from './Contact.module.css'
 
 const initialForm = {
@@ -31,6 +32,19 @@ export default function Contact() {
       return { ...current, [name]: value }
     })
   }
+
+  useEffect(() => {
+    const requestedFlavor = new URLSearchParams(window.location.search).get('flavor')
+    const validFlavor = flavors.some(flavor => flavor.name === requestedFlavor) ? requestedFlavor : ''
+
+    if (validFlavor) {
+      setForm(current => ({
+        ...current,
+        flavor: validFlavor,
+        message: isAutoMessage(current.message) ? flavorMessage(validFlavor) : current.message,
+      }))
+    }
+  }, [])
 
   useEffect(() => {
     const handleFlavorRequest = e => {
@@ -75,7 +89,7 @@ export default function Contact() {
     <section id="contact" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.left}>
-          <span className={styles.eyebrow}>📬 Get in Touch</span>
+          <span className={styles.eyebrow}>Get in Touch</span>
           <h2 className={styles.title}>
             <span className="bubble-pink">Request</span>{' '}
             <span className="bubble-purple">a</span>{' '}
@@ -88,9 +102,9 @@ export default function Contact() {
 
           <div className={styles.contactInfo}>
             {[
-              { icon: '🌐', label: 'Las Vegas area pilot batches by request' },
-              { icon: '📧', label: 'hello@puppywhippies.com', href: 'mailto:hello@puppywhippies.com' },
-              { icon: '📍', label: 'Pickup or delivery fit confirmed around Las Vegas' },
+              { icon: 'LV', label: 'Las Vegas area pilot batches by request' },
+              { icon: '@', label: 'hello@puppywhippies.com', href: 'mailto:hello@puppywhippies.com' },
+              { icon: '702', label: 'Pickup or delivery fit confirmed around Las Vegas' },
             ].map(c => (
               <div key={c.label} className={styles.contactItem}>
                 <span className={styles.contactIcon}>{c.icon}</span>
@@ -102,11 +116,11 @@ export default function Contact() {
 
         <div className={styles.right}>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <h3 className={styles.formTitle}>Request Availability 🍓</h3>
+            <h3 className={styles.formTitle}>Request Availability</h3>
 
             {draftAttempted && (
               <div className={styles.success} role="status" aria-live="polite" tabIndex="-1" ref={statusRef}>
-                <div className={styles.successEmoji}>🐾</div>
+                <div className={styles.successEmoji}>PW</div>
                 <h3>Email draft opened?</h3>
                 <p>
                   Please send the draft from your mail app. If it did not open, email{' '}
@@ -151,12 +165,9 @@ export default function Contact() {
                 value={form.flavor}
                 onChange={handleChange}
               >
-                <option>Strawberry Dream Whip</option>
-                <option>Blueberry Bliss Puff</option>
-                <option>Carrot Patch Fluff</option>
-                <option>Berry Medley Mix</option>
-                <option>Cucumber Cool Swirl</option>
-                <option>Sampler Pack</option>
+                {flavors.map(flavor => (
+                  <option key={flavor.name}>{flavor.name}</option>
+                ))}
                 <option>Not sure yet</option>
               </select>
             </div>
@@ -227,7 +238,7 @@ export default function Contact() {
             </p>
 
             <button type="submit" className={styles.submitBtn}>
-              Start Email Request 🐾
+              Start Email Request
             </button>
           </form>
         </div>

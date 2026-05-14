@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-static-routes.mjs",
     "preview": "vite preview",
     "video:studio": "remotion studio src/remotion/index.jsx",
     "video:still": "remotion still src/remotion/index.jsx PuppyWhippiesAd --frame=180 --output=renders/puppy-whippies-ad-frame.png",

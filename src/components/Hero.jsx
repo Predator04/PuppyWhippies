@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="home" className={styles.hero}>
       <div className={styles.inner}>
         <div className={styles.logoWrap}>
-          <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.logoImg} />
+          <img src="/logo-web.png" alt="Puppy Whippies" className={styles.logoImg} />
         </div>
 
         <h1 className={styles.brandName}>
@@ -30,8 +30,8 @@ export default function Hero() {
         </p>
 
         <div className={styles.buttons}>
-          <a href="#products" className={styles.btnPrimary}>Explore Flavors</a>
-          <a href="#about" className={styles.btnSecondary}>Our Story</a>
+          <a href="/flavors/" className={styles.btnPrimary}>Explore Flavors</a>
+          <a href="/about/" className={styles.btnSecondary}>Our Story</a>
         </div>
       </div>
 

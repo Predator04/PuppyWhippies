@@ -6,14 +6,14 @@ export default function About() {
       <div className={styles.container}>
         <div className={styles.imageSide}>
           <div className={styles.imgWrap}>
-            <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.img} />
-            <div className={styles.bubble1}>🐾 Made with Love</div>
-            <div className={styles.bubble2}>Ingredient Details 🌿</div>
+            <img src="/logo-web.png" alt="Puppy Whippies" className={styles.img} />
+            <div className={styles.bubble1}>Made with Love</div>
+            <div className={styles.bubble2}>Ingredient Details</div>
           </div>
         </div>
 
         <div className={styles.textSide}>
-          <span className={styles.eyebrow}>💜 Our Story</span>
+          <span className={styles.eyebrow}>Our Story</span>
           <h2 className={styles.title}>
             <span className="bubble-purple">Why We</span>{' '}
             <span className="bubble-pink">Started</span>
@@ -25,16 +25,16 @@ export default function About() {
           </p>
           <p className={styles.body}>
             Every Puppy Whippie request starts with the practical details: current ingredients, serving size,
-            storage, availability, and whether the batch is a good fit for your pup.
-            We are still refining the lineup, so we keep availability and serving guidance personal.
+            storage, availability, and whether the batch is a good fit for your pup. We are still refining the
+            lineup, so we keep availability and serving guidance personal.
           </p>
 
           <div className={styles.pillars}>
             {[
-              { icon: '🍓', label: 'Ingredient Details' },
-              { icon: '🚫', label: 'No Payment on Site' },
-              { icon: '🐶', label: 'Dog-Loving Families' },
-              { icon: '📍', label: 'Las Vegas Area' },
+              { icon: 'PW', label: 'Ingredient Details' },
+              { icon: 'No', label: 'No Payment on Site' },
+              { icon: 'LV', label: 'Dog-Loving Families' },
+              { icon: '702', label: 'Las Vegas Area' },
             ].map(p => (
               <div key={p.label} className={styles.pillar}>
                 <span className={styles.pillarIcon} aria-hidden="true">{p.icon}</span>
@@ -43,7 +43,7 @@ export default function About() {
             ))}
           </div>
 
-          <a href="#contact" className={styles.cta}>Request Availability 🐾</a>
+          <a href="/request/" className={styles.cta}>Request Availability</a>
         </div>
       </div>
     </section>

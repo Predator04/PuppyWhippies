@@ -1,6 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import styles from './Navbar.module.css'
 
+const navItems = [
+  ['Home', '/'],
+  ['Flavors', '/flavors/'],
+  ['Las Vegas', '/las-vegas-dog-treats/'],
+  ['Ingredients', '/ingredients/'],
+  ['About', '/about/'],
+]
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -39,9 +47,7 @@ export default function Navbar() {
       }
 
       if (e.key === 'Tab') {
-        const focusable = navRef.current?.querySelectorAll(
-          'a[href], button:not([disabled])'
-        )
+        const focusable = navRef.current?.querySelectorAll('a[href], button:not([disabled])')
         if (!focusable?.length) return
 
         const first = focusable[0]
@@ -58,9 +64,7 @@ export default function Navbar() {
     }
 
     const onPointerDown = e => {
-      if (!navRef.current?.contains(e.target)) {
-        setMenuOpen(false)
-      }
+      if (!navRef.current?.contains(e.target)) setMenuOpen(false)
     }
 
     window.addEventListener('keydown', onKeyDown)
@@ -74,8 +78,8 @@ export default function Navbar() {
 
   return (
     <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <a href="#home" className={styles.logo}>
-        <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.logoImg} />
+      <a href="/" className={styles.logo}>
+        <img src="/logo-web.png" alt="Puppy Whippies" className={styles.logoImg} />
         <span className={styles.logoText}>
           <span className={styles.logoPink}>Pupp</span><span className={styles.logoTeal}>y</span>{' '}
           <span className={styles.logoPurple}>Whippies</span>
@@ -94,20 +98,16 @@ export default function Navbar() {
       </button>
 
       <ul id={menuId} className={`${styles.links} ${menuOpen ? styles.open : ''}`} data-open={menuOpen}>
-        {['Home','Flavors','About','Why Us','Contact'].map((item, index) => (
-          <li key={item}>
-            <a
-              ref={index === 0 ? firstLinkRef : undefined}
-              href={`#${item === 'Flavors' ? 'products' : item.toLowerCase().replace(' ','-')}`}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
+        {navItems.map(([label, href], index) => (
+          <li key={label}>
+            <a ref={index === 0 ? firstLinkRef : undefined} href={href} onClick={() => setMenuOpen(false)}>
+              {label}
             </a>
           </li>
         ))}
         <li>
-          <a href="#contact" className={styles.cta} onClick={() => setMenuOpen(false)}>
-            Request Availability 🐾
+          <a href="/request/" className={styles.cta} onClick={() => setMenuOpen(false)}>
+            Request Availability
           </a>
         </li>
       </ul>

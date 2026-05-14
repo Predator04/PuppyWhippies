@@ -57,7 +57,9 @@
   padding: 8px 16px;
   border-radius: 999px;
   box-shadow: 0 6px 0 rgba(248,58,122,0.18), 0 16px 26px rgba(0,0,0,0.12);
-  white-space: nowrap;
+  max-width: min(220px, 72vw);
+  text-align: center;
+  white-space: normal;
 }
 
 .bubble1 {
@@ -186,4 +188,10 @@
 
 @media (max-width: 480px) {
   .pillars { grid-template-columns: 1fr; }
+  .bubble1 {
+    right: -4px;
+  }
+  .bubble2 {
+    left: -4px;
+  }
 }

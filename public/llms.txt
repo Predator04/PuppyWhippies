@@ -1,0 +1,28 @@
+# Puppy Whippies
+
+Puppy Whippies is a Las Vegas area pilot-batch dog treat cup brand. The site lets local dog families review current whipped treat cup flavors and request availability by email. No payment is collected on the website.
+
+## Key Pages
+
+- Home: https://puppywhippies.com/
+- Flavor lineup: https://puppywhippies.com/flavors/
+- Las Vegas dog treats: https://puppywhippies.com/las-vegas-dog-treats/
+- Ingredients and serving notes: https://puppywhippies.com/ingredients/
+- About Puppy Whippies: https://puppywhippies.com/about/
+- Request availability: https://puppywhippies.com/request/
+
+## Current Flavor Concepts
+
+- Strawberry Dream Whip
+- Blueberry Bliss Puff
+- Carrot Patch Fluff
+- Berry Medley Mix
+- Cucumber Cool Swirl
+- Sampler Pack
+
+## Important Facts
+
+- Service area: Las Vegas area, with pickup or delivery fit confirmed per request.
+- Contact: hello@puppywhippies.com
+- Buying process: visitors request availability by email; ingredients, serving notes, timing, and local fit are confirmed before any pickup, delivery, or payment.
+- Safety note: Puppy Whippies treats are not veterinary products. Pet owners should supervise dogs while serving treats and review ingredients for household-specific concerns.
