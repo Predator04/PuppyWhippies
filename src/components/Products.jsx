@@ -27,10 +27,8 @@ export default function Products() {
               <Reveal key={flavor.id} variant="up" delay={i * 80}>
                 <div className={styles.card}>
                   <div className={`${styles.flavorArt} ${styles[flavor.art]}`} aria-hidden="true">
-                    <span className={styles.cup} />
-                    <span className={styles.whip} />
-                    <span className={styles.fruitOne} />
-                    <span className={styles.fruitTwo} />
+                    <img src="/logo-web.png" alt="" className={styles.puppyImg} />
+                    <span className={styles.toneWash} />
                     <span className={styles.sparkle} />
                   </div>
 

@@ -101,10 +101,19 @@
 
 .flavorArt {
   position: relative;
-  width: 116px;
-  height: 112px;
+  width: 138px;
+  height: 126px;
   margin-bottom: 4px;
-  filter: drop-shadow(0 9px 0 rgba(53,16,97,0.12)) drop-shadow(0 18px 18px rgba(53,16,97,0.18));
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 34% 20%, rgba(255,255,255,0.94) 0 18%, transparent 19%),
+    linear-gradient(135deg, var(--flavor-light), var(--flavor-mid) 58%, var(--flavor-dark));
+  border: 4px solid var(--sticker);
+  box-shadow:
+    inset 0 0 0 2px rgba(255,255,255,0.56),
+    0 9px 0 rgba(53,16,97,0.12),
+    0 18px 18px rgba(53,16,97,0.18);
+  overflow: hidden;
   transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
 }
 
@@ -112,63 +121,43 @@
   transform: translateY(-4px) rotate(-4deg) scale(1.06);
 }
 
-.cup,
-.whip,
-.fruitOne,
-.fruitTwo,
+.puppyImg,
+.toneWash,
 .sparkle {
   position: absolute;
   display: block;
 }
 
-.cup {
-  left: 28px;
-  bottom: 6px;
-  width: 66px;
-  height: 54px;
-  border-radius: 14px 14px 24px 24px;
+.puppyImg {
+  left: 50%;
+  top: -28px;
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+  object-position: center top;
+  transform: translateX(-50%);
+  filter:
+    saturate(var(--puppy-saturate, 1.25))
+    hue-rotate(var(--puppy-hue, 0deg))
+    contrast(1.04)
+    brightness(var(--puppy-brightness, 1.02));
+  mix-blend-mode: normal;
+  opacity: 1;
+}
+
+.toneWash {
+  inset: 0;
   background:
-    linear-gradient(180deg, rgba(255,255,255,0.45) 0 20%, transparent 21%),
-    linear-gradient(135deg, var(--pink), var(--purple));
-  border: 4px solid var(--sticker);
-  box-shadow: inset 0 -10px 0 rgba(53,16,97,0.18);
-}
-
-.whip {
-  left: 26px;
-  top: 18px;
-  width: 70px;
-  height: 48px;
-  border-radius: 48% 52% 44% 56% / 58% 42% 58% 42%;
-  background:
-    radial-gradient(circle at 35% 26%, #fff 0 12%, transparent 13%),
-    linear-gradient(180deg, #fffdf9 0%, #ffe9f2 100%);
-  border: 4px solid var(--sticker);
-}
-
-.fruitOne {
-  left: 4px;
-  top: 34px;
-  width: 38px;
-  height: 42px;
-  border-radius: 55% 45% 50% 50% / 60% 60% 40% 40%;
-  background: linear-gradient(180deg, #ff6a9e 0%, #d90458 100%);
-  border: 3px solid var(--sticker);
-}
-
-.fruitTwo {
-  right: 4px;
-  top: 26px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(180deg, #a975ff 0%, #5a16b2 100%);
-  border: 3px solid var(--sticker);
+    radial-gradient(circle at 50% 38%, transparent 0 34%, rgba(255,255,255,0.58) 35% 53%, transparent 54%),
+    linear-gradient(180deg, rgba(255,255,255,0.18), var(--flavor-glow));
+  mix-blend-mode: color;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .sparkle {
-  right: 18px;
-  bottom: 18px;
+  right: 10px;
+  bottom: 10px;
   width: 18px;
   height: 18px;
   transform: rotate(45deg);
@@ -177,42 +166,58 @@
   border: 2px solid var(--sticker);
 }
 
-.blueberry .fruitOne,
-.blueberry .fruitTwo {
-  background: linear-gradient(180deg, #9e84ff 0%, #4d24aa 100%);
-  border-radius: 50%;
+.strawberry {
+  --flavor-light: #ffe0ed;
+  --flavor-mid: #ff6fa8;
+  --flavor-dark: #cf0054;
+  --flavor-glow: rgba(255, 67, 135, 0.58);
+  --puppy-hue: 336deg;
+  --puppy-saturate: 1.35;
 }
 
-.blueberry .cup {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.45) 0 20%, transparent 21%),
-    linear-gradient(135deg, #08B9D6, #7E34D6);
+.blueberry {
+  --flavor-light: #dff8ff;
+  --flavor-mid: #08b9d6;
+  --flavor-dark: #4d24aa;
+  --flavor-glow: rgba(8, 185, 214, 0.58);
+  --puppy-hue: 175deg;
+  --puppy-saturate: 1.55;
 }
 
-.carrot .fruitOne,
-.carrot .fruitTwo {
-  background: linear-gradient(180deg, #ffbe50 0%, #f36c22 100%);
-  border-radius: 65% 35% 50% 50% / 30% 30% 70% 70%;
+.carrot {
+  --flavor-light: #fff1bd;
+  --flavor-mid: #ff9d3c;
+  --flavor-dark: #d94d1a;
+  --flavor-glow: rgba(255, 157, 60, 0.58);
+  --puppy-hue: 26deg;
+  --puppy-saturate: 1.45;
 }
 
-.berry .fruitOne {
-  background: linear-gradient(180deg, #ff6a9e 0%, #b90045 100%);
+.berry {
+  --flavor-light: #f5d9ff;
+  --flavor-mid: #c03aff;
+  --flavor-dark: #b90045;
+  --flavor-glow: rgba(192, 58, 255, 0.58);
+  --puppy-hue: 288deg;
+  --puppy-saturate: 1.5;
 }
 
-.berry .fruitTwo {
-  background: linear-gradient(180deg, #7058d9 0%, #291157 100%);
+.cucumber {
+  --flavor-light: #edffd8;
+  --flavor-mid: #6bdc83;
+  --flavor-dark: #138c7c;
+  --flavor-glow: rgba(81, 210, 129, 0.58);
+  --puppy-hue: 118deg;
+  --puppy-saturate: 1.36;
 }
 
-.cucumber .fruitOne,
-.cucumber .fruitTwo {
-  background: linear-gradient(180deg, #a9e66d 0%, #2c9f59 100%);
-  border-radius: 44% 56% 48% 52%;
-}
-
-.sampler .cup {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.45) 0 20%, transparent 21%),
-    linear-gradient(135deg, #ff4f91 0%, #8d42f0 50%, #08b9d6 100%);
+.sampler {
+  --flavor-light: #fff0d9;
+  --flavor-mid: #ff4f91;
+  --flavor-dark: #08b9d6;
+  --flavor-glow: rgba(126, 52, 214, 0.54);
+  --puppy-hue: 312deg;
+  --puppy-saturate: 1.42;
 }
 
 .cardTag {
@@ -332,7 +337,12 @@
   .container { padding: 0 20px; }
   .header { margin-bottom: 36px; }
   .card { padding: 24px 18px 20px; border-radius: 22px; }
-  .flavorArt { width: 104px; height: 102px; }
+  .flavorArt { width: 124px; height: 114px; }
+  .puppyImg {
+    top: -24px;
+    width: 292px;
+    height: 292px;
+  }
   .cardBottom {
     align-items: stretch;
     flex-direction: column;
