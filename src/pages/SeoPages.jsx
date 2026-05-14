@@ -47,11 +47,11 @@ export function FlavorsPage() {
         '@type': 'ListItem',
         position: index + 1,
         item: {
-          '@type': 'Product',
+          '@type': 'Thing',
           name: flavor.name,
           description: flavor.desc,
           image: `${SITE_URL}/logo-web.png`,
-          brand: { '@id': `${SITE_URL}/#organization` },
+          provider: { '@id': `${SITE_URL}/#organization` },
           areaServed: 'Las Vegas, Nevada',
         },
       })),

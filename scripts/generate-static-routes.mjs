@@ -85,10 +85,10 @@ const graphForPage = page => {
           '@type': 'ListItem',
           position: index + 1,
           item: {
-            '@type': 'Product',
+            '@type': 'Thing',
             name,
             image: imageUrl,
-            brand: { '@id': `${siteUrl}/#organization` },
+            provider: { '@id': `${siteUrl}/#organization` },
             areaServed: 'Las Vegas, Nevada',
           },
         })),
@@ -169,7 +169,7 @@ const htmlForPage = (baseHtml, page) => {
   const jsonLd = JSON.stringify(graphForPage(page))
   html = html.replace(
     '</head>',
-    `    <script type="application/ld+json">${jsonLd}</script>\n  </head>`
+    `    <script id="seo-jsonld" type="application/ld+json">${jsonLd}</script>\n  </head>`
   )
 
   return html
