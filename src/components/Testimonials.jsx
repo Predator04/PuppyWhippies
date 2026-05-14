@@ -5,13 +5,13 @@ const details = [
   {
     name: 'Current Batch',
     avatar: '🌿',
-    text: 'Puppy Whippies is in Las Vegas area pilot-batch mode. Availability, flavor, serving size, and pickup or delivery fit are confirmed by email before anything moves forward.',
+    text: 'Puppy Whippies is in Las Vegas area freeze-dried pilot-batch mode. Availability, flavor, serving size, and pickup or delivery fit are confirmed by email before anything moves forward.',
     tag: 'Pilot status',
   },
   {
     name: 'Ingredient Check',
     avatar: '🥄',
-    text: 'Example batches may include fruit or veggie puree, a whipped base, and chilled storage. Current ingredients are confirmed before pickup or delivery.',
+    text: 'Example batches use all-natural fruit or veggie-forward ingredients and are freeze-dried for a light treat texture. Current ingredients are confirmed before pickup or delivery.',
     tag: 'Details first',
   },
   {

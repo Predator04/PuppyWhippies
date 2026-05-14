@@ -19,7 +19,7 @@ export default function Footer() {
                 <span className={styles.brandPink}>Puppy</span>{' '}
                 <span className={styles.brandPurple}>Whippies</span>
               </div>
-              <p className={styles.tagline}>Fruity * Fluffy * Delicious</p>
+              <p className={styles.tagline}>Fruity * Freeze-Dried * All Natural</p>
               <p className={styles.domain}>puppywhippies.com</p>
             </div>
           </div>
@@ -42,8 +42,8 @@ export default function Footer() {
             <div className={styles.linkCol}>
               <h4>Request Notes</h4>
               <span>No payment is collected on this site.</span>
-              <span>Ingredients are confirmed by email.</span>
-              <span>Las Vegas area pickup or delivery is arranged per batch.</span>
+              <span>All-natural ingredients are confirmed by email.</span>
+              <span>Las Vegas area pickup or delivery is arranged per freeze-dried batch.</span>
             </div>
           </div>
         </div>

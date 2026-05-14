@@ -96,13 +96,13 @@ export default function Contact() {
             <span className="bubble-teal">Flavor</span>
           </h2>
           <p className={styles.body}>
-            Request a pilot sample cup for your pup in the Las Vegas area. Add your neighborhood so we can confirm
+            Request a freeze-dried pilot flavor for your pup in the Las Vegas area. Add your neighborhood so we can confirm
             whether pickup or delivery is in range. No payment is collected here.
           </p>
 
           <div className={styles.contactInfo}>
             {[
-              { icon: 'LV', label: 'Las Vegas area pilot batches by request' },
+              { icon: 'LV', label: 'Las Vegas area freeze-dried pilot batches by request' },
               { icon: '@', label: 'hello@puppywhippies.com', href: 'mailto:hello@puppywhippies.com' },
               { icon: '702', label: 'Pickup or delivery fit confirmed around Las Vegas' },
             ].map(c => (
@@ -226,14 +226,14 @@ export default function Contact() {
                 name="message"
                 value={form.message}
                 onChange={handleChange}
-                placeholder="I would like to request availability for a pilot batch..."
+                placeholder="I would like to request availability for a freeze-dried pilot batch..."
                 rows={5}
                 required
               />
             </div>
 
             <p className={styles.formNote}>
-              This starts an email request only. We confirm ingredients, serving notes, Las Vegas area fit, and timing before
+              This starts an email request only. We confirm all-natural ingredients, serving notes, Las Vegas area fit, and timing before
               any pickup, delivery, or payment. Your details are only used to reply about Puppy Whippies availability.
             </p>
 

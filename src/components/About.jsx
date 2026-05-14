@@ -20,12 +20,12 @@ export default function About() {
           </h2>
           <p className={styles.body}>
             Puppy Whippies was born out of pure love for dogs and the families who spoil them.
-            We wanted a cheerful dog treat ritual that adults can supervise and everyone can enjoy watching,
+            We wanted a cheerful freeze-dried dog treat ritual that adults can supervise and everyone can enjoy,
             without pretending every pet or household needs the same thing.
           </p>
           <p className={styles.body}>
-            Every Puppy Whippie request starts with the practical details: current ingredients, serving size,
-            storage, availability, and whether the batch is a good fit for your pup. We are still refining the
+            Every Puppy Whippie request starts with the practical details: all-natural ingredients, serving size,
+            availability, and whether the freeze-dried batch is a good fit for your pup. We are still refining the
             lineup, so we keep availability and serving guidance personal.
           </p>
 

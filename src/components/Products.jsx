@@ -14,7 +14,7 @@ export default function Products() {
               <span className="bubble-purple">Lineup</span>
             </h2>
             <p className={styles.subtitle}>
-              Choose a pilot sample cup. Each request starts with flavor fit, storage notes, serving guidance,
+              Choose a freeze-dried pilot flavor. Each request starts with flavor fit, all-natural ingredient notes, serving guidance,
               and Las Vegas area pickup or delivery timing.
             </p>
           </div>
@@ -52,7 +52,7 @@ export default function Products() {
                   <p className={styles.cardDetail}>{flavor.detail}</p>
 
                   <div className={styles.cardBottom}>
-                    <span className={styles.cardPrice}>Pilot sample cup</span>
+                    <span className={styles.cardPrice}>Freeze-dried pilot batch</span>
                     <a className={styles.addBtn} href={`/request/?flavor=${encodeURIComponent(flavor.name)}`}>
                       Request Availability
                     </a>

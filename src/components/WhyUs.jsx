@@ -6,7 +6,7 @@ const features = [
     icon: '🌿',
     color: 'teal',
     title: 'Ingredients Before Pickup',
-    desc: 'Current batch ingredients are shared before pickup, delivery, or payment, so there are no mystery treats.',
+    desc: 'All-natural batch ingredients are shared before pickup, delivery, or payment, so there are no mystery treats.',
   },
   {
     icon: '🐶',
@@ -23,8 +23,8 @@ const features = [
   {
     icon: '☁️',
     color: 'pink',
-    title: 'Whipped-Style Texture',
-    desc: 'Soft, spoonable treat cups with texture, serving size, and storage notes shared before pickup or delivery.',
+    title: 'Freeze-Dried Texture',
+    desc: 'Light freeze-dried treats with serving size and batch notes shared before pickup or delivery.',
   },
   {
     icon: '💝',
@@ -59,7 +59,7 @@ export default function WhyUs() {
               <span className="bubble-teal">Difference</span>
             </h2>
             <p className={styles.subtitle}>
-              A playful treat concept for families who love their dogs deeply and want the details handled with care.
+              A playful freeze-dried treat concept for families who love their dogs deeply and want the details handled with care.
             </p>
           </div>
         </Reveal>
@@ -87,7 +87,7 @@ export default function WhyUs() {
           {[
             { num: 'Pilot', label: 'Batch Status' },
             { num: '1:1', label: 'Request Help' },
-            { num: 'Before', label: 'Ingredients Shared' },
+            { num: 'Natural', label: 'Ingredients' },
             { num: 'No', label: 'Online Payment' },
           ].map((s, i) => (
             <div key={i} className={styles.stat}>

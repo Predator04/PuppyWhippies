@@ -1,13 +1,12 @@
 import styles from './Marquee.module.css'
 
 const items = [
-  '🍓 Fruity', '🐾 Pup-Loving', '☁️ Fluffy', '📍 Las Vegas Area',
-  '🫐 Blueberry', '💝 Made with Love', '🥕 Veggie Ideas', '🐶 Pup-Ready',
-  '🌿 Ingredient Details', '🐶 Dog Families', '🍇 Berry Good', '✨ Small Batch',
+  'Fruity', 'Pup-Loving', 'Freeze-Dried', 'Las Vegas Area',
+  'Blueberry', 'Made with Love', 'Veggie Ideas', 'Pup-Ready',
+  'All-Natural Ingredients', 'Dog Families', 'Berry Good', 'Small Batch',
 ]
 
 export default function Marquee() {
-  // Double the items so the loop is seamless
   const doubled = [...items, ...items]
 
   return (
@@ -17,7 +16,7 @@ export default function Marquee() {
           {doubled.map((item, i) => (
             <span key={i} className={styles.item}>
               {item}
-              <span className={styles.sep}>•</span>
+              <span className={styles.sep}>*</span>
             </span>
           ))}
         </div>

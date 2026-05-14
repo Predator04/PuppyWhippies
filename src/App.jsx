@@ -45,8 +45,8 @@ function HomePage() {
   return (
     <>
       <SEO
-        title="Puppy Whippies - Small-Batch Dog Treat Cups"
-        description="Puppy Whippies is a playful Las Vegas area pilot-batch dog treat brand with glossy whipped sample cups, flavor requests, ingredient confirmation, and pickup or delivery fit by email."
+        title="Puppy Whippies - Freeze-Dried Dog Treats"
+        description="Puppy Whippies is a playful Las Vegas area pilot-batch dog treat brand with freeze-dried flavors, all-natural ingredient confirmation, and pickup or delivery fit by email."
         path="/"
       />
       <main id="main" tabIndex="-1">

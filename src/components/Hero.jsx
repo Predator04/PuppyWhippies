@@ -14,18 +14,18 @@ export default function Hero() {
           <span className="bubble-purple">Whippies</span>
         </h1>
 
-        <p className={styles.heroLine}>Small-batch whipped treat cups for dog-loving families.</p>
+        <p className={styles.heroLine}>Small-batch freeze-dried dog treats made with all-natural ingredients.</p>
 
         <div className={styles.tagline}>
           <span>Fruity</span>
           <span className={styles.dot}>*</span>
-          <span>Fluffy</span>
+          <span>Freeze-Dried</span>
           <span className={styles.dot}>*</span>
           <span>Delicious</span>
         </div>
 
         <p className={styles.sub}>
-          Pick a pilot sample cup in the Las Vegas area, and we will confirm flavor, serving notes,
+          Pick a pilot flavor in the Las Vegas area, and we will confirm ingredients, serving notes,
           pickup or delivery fit, and next batch timing.
         </p>
 

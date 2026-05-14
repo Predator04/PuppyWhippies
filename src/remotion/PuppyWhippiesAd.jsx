@@ -347,7 +347,7 @@ export const PuppyWhippiesAd = () => {
           <BubbleWord />
         </div>
         <Headline top={780} start={56} size={62}>
-          Whipped treat cups made for dog-loving families.
+          Freeze-dried treats made with all-natural ingredients.
         </Headline>
       </AbsoluteFill>
 
@@ -370,9 +370,9 @@ export const PuppyWhippiesAd = () => {
         <TreatCup start={166} x={542} y={522} scale={1.06} />
         <TreatCup start={182} x={764} y={590} scale={0.86} />
         <Headline top={126} start={142} size={78}>
-          Fruity. Fluffy. Delicious.
+          Fruity. Freeze-Dried. All Natural.
         </Headline>
-        <Pill top={812} start={198}>Pick a pilot flavor</Pill>
+        <Pill top={812} start={198}>Pick a freeze-dried flavor</Pill>
         <div
           style={{
             position: 'absolute',
@@ -388,7 +388,7 @@ export const PuppyWhippiesAd = () => {
             lineHeight: 1.18,
           }}
         >
-          We confirm ingredients, serving notes, and Las Vegas area availability first.
+          We confirm all-natural ingredients, serving notes, and Las Vegas area availability first.
         </div>
       </AbsoluteFill>
 
@@ -420,7 +420,7 @@ export const PuppyWhippiesAd = () => {
           <BubbleWord compact />
         </div>
         <Headline top={684} start={334} size={56}>
-          Request your sample cup.
+          Request your pilot batch.
         </Headline>
         <Pill top={792} start={358}>puppywhippies.com</Pill>
         <div
@@ -437,7 +437,7 @@ export const PuppyWhippiesAd = () => {
             fontWeight: 900,
           }}
         >
-          Small-batch requests. Flavor details before pickup or delivery.
+          Small-batch freeze-dried requests. Flavor details before pickup or delivery.
         </div>
       </AbsoluteFill>
     </SceneShell>

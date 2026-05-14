@@ -8,33 +8,33 @@ const imageUrl = `${siteUrl}/logo-web.png`
 const pages = [
   {
     route: '',
-    title: 'Puppy Whippies - Small-Batch Dog Treat Cups',
-    description: 'Puppy Whippies is a playful Las Vegas area pilot-batch dog treat brand with glossy whipped sample cups, flavor requests, ingredient confirmation, and pickup or delivery fit by email.',
+    title: 'Puppy Whippies - Freeze-Dried Dog Treats',
+    description: 'Puppy Whippies is a playful Las Vegas area pilot-batch dog treat brand with freeze-dried flavors, all-natural ingredient confirmation, and pickup or delivery fit by email.',
   },
   {
     route: 'flavors',
-    title: 'Dog Treat Cup Flavors in Las Vegas | Puppy Whippies',
-    description: 'Explore Puppy Whippies pilot sample cup flavors for Las Vegas area dog families, including strawberry, blueberry, carrot, berry, cucumber, and sampler requests.',
+    title: 'Freeze-Dried Dog Treat Flavors in Las Vegas | Puppy Whippies',
+    description: 'Explore Puppy Whippies freeze-dried dog treat flavors made with all-natural ingredients for Las Vegas area dog families, including strawberry, blueberry, carrot, berry, cucumber, and sampler requests.',
   },
   {
     route: 'las-vegas-dog-treats',
     title: 'Las Vegas Dog Treats | Puppy Whippies',
-    description: 'Puppy Whippies offers Las Vegas area pilot requests for small-batch whipped dog treat cups with flavor, ingredient, pickup, and delivery details confirmed by email.',
+    description: 'Puppy Whippies offers Las Vegas area pilot requests for small-batch freeze-dried dog treats with all-natural ingredients, flavor, pickup, and delivery details confirmed by email.',
   },
   {
     route: 'ingredients',
     title: 'Dog Treat Ingredients and Serving Notes | Puppy Whippies',
-    description: 'See how Puppy Whippies confirms ingredients, serving notes, pet notes, and chilled storage guidance for Las Vegas area whipped dog treat cup requests.',
+    description: 'See how Puppy Whippies confirms all-natural ingredients, serving notes, and pet notes for Las Vegas area freeze-dried dog treat requests.',
   },
   {
     route: 'about',
     title: 'About Puppy Whippies',
-    description: 'Meet Puppy Whippies, a Las Vegas area pilot-batch dog treat cup brand built around playful flavors, ingredient clarity, and dog-family joy.',
+    description: 'Meet Puppy Whippies, a Las Vegas area pilot-batch freeze-dried dog treat brand built around playful flavors, all-natural ingredients, and dog-family joy.',
   },
   {
     route: 'request',
     title: 'Request Puppy Whippies Availability',
-    description: 'Request Puppy Whippies Las Vegas area pilot sample cup availability and confirm flavor, ingredients, serving notes, pickup, or delivery timing by email.',
+    description: 'Request Puppy Whippies Las Vegas area freeze-dried dog treat availability and confirm flavor, all-natural ingredients, serving notes, pickup, or delivery timing by email.',
   },
 ]
 
@@ -109,7 +109,7 @@ const graphForPage = page => {
           name: 'Las Vegas',
           containedInPlace: { '@type': 'State', name: 'Nevada' },
         },
-        description: 'Puppy Whippies offers Las Vegas area pilot requests for small-batch whipped dog treat cups.',
+        description: 'Puppy Whippies offers Las Vegas area pilot requests for small-batch freeze-dried dog treats made with all-natural ingredients.',
       }
     )
   } else if (page.route === 'ingredients') {
@@ -123,7 +123,7 @@ const graphForPage = page => {
             name: 'Are Puppy Whippies ingredients confirmed before pickup or delivery?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Yes. Current batch ingredients, serving notes, and chilled storage guidance are confirmed by email before pickup, delivery, or payment.',
+              text: 'Yes. Current all-natural batch ingredients and serving guidance are confirmed by email before pickup, delivery, or payment.',
             },
           },
           {

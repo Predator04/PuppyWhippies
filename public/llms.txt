@@ -1,6 +1,6 @@
 # Puppy Whippies
 
-Puppy Whippies is a Las Vegas area pilot-batch dog treat cup brand. The site lets local dog families review current whipped treat cup flavors and request availability by email. No payment is collected on the website.
+Puppy Whippies is a Las Vegas area pilot-batch freeze-dried dog treat brand. The site lets local dog families review current freeze-dried flavors made with all-natural ingredients and request availability by email. No payment is collected on the website.
 
 ## Key Pages
 
@@ -24,5 +24,5 @@ Puppy Whippies is a Las Vegas area pilot-batch dog treat cup brand. The site let
 
 - Service area: Las Vegas area, with pickup or delivery fit confirmed per request.
 - Contact: hello@puppywhippies.com
-- Buying process: visitors request availability by email; ingredients, serving notes, timing, and local fit are confirmed before any pickup, delivery, or payment.
+- Buying process: visitors request availability by email; all-natural ingredients, serving notes, timing, and local fit are confirmed before any pickup, delivery, or payment.
 - Safety note: Puppy Whippies treats are not veterinary products. Pet owners should supervise dogs while serving treats and review ingredients for household-specific concerns.
