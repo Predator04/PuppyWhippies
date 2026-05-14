@@ -3,9 +3,9 @@
   min-height: 94vh;
   width: 100%;
   background:
-    radial-gradient(circle at 50% 30%, rgba(255,255,255,0.86) 0 12%, rgba(255,255,255,0) 35%),
-    radial-gradient(circle at 16% 20%, rgba(255, 58, 122, 0.26), transparent 24vw),
-    radial-gradient(circle at 82% 18%, rgba(8, 185, 214, 0.18), transparent 22vw),
+    radial-gradient(circle at 50% 30%, rgba(255,255,255,0.78) 0 12%, rgba(255,255,255,0) 35%),
+    radial-gradient(circle at 16% 20%, rgba(255, 58, 122, 0.18), transparent 24vw),
+    radial-gradient(circle at 82% 18%, rgba(8, 185, 214, 0.13), transparent 22vw),
     linear-gradient(135deg, #ffd6c4 0%, #ffeef8 42%, #efd6ff 72%, #ffe1c8 100%);
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@
   content: '';
   position: absolute;
   inset: 86px clamp(12px, 4vw, 52px) 44px;
-  border: 4px dashed rgba(248, 58, 122, 0.32);
+  border: 3px dashed rgba(248, 58, 122, 0.22);
   border-radius: 42% 58% 48% 52% / 52% 45% 55% 48%;
   pointer-events: none;
 }
@@ -102,7 +102,7 @@
 }
 
 .logoImg {
-  width: clamp(140px, 20vw, 220px);
+  width: clamp(156px, 21vw, 240px);
   height: auto;
   aspect-ratio: 1;
   border-radius: 18px;
@@ -110,7 +110,7 @@
   border: 0;
   box-shadow:
     0 30px 80px rgba(139,79,192,0.38);
-  animation: bobble 3.5s ease-in-out infinite;
+  animation: bobble 4.5s ease-in-out infinite;
   position: relative;
   z-index: 2;
   filter:
@@ -141,7 +141,7 @@
 .brandName {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-size: clamp(2.65rem, 5.5vw, 4.45rem);
   line-height: 1.0;
   letter-spacing: 1px;
   padding-bottom: 6px;
@@ -211,7 +211,7 @@
   border-radius: 999px;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.48) 0 18%, transparent 19%),
-    linear-gradient(135deg, #FF4F91 0%, #8D42F0 68%, #08B9D6 100%);
+    linear-gradient(135deg, #cf0054 0%, #6a20bd 72%, #046c82 100%);
   border: 3px solid var(--sticker);
   box-shadow: 0 8px 0 #8C0036, 0 14px 0 rgba(53,16,97,0.22), 0 22px 34px rgba(240,82,122,0.38);
   transition: transform 0.15s, box-shadow 0.15s;
@@ -315,12 +315,10 @@
     padding-top: 74px;
   }
   .inner { padding-inline: 14px; }
-  .logoImg { width: clamp(128px, 42vw, 164px); }
-  .badge { max-width: 92vw; text-align: center; }
-  .brandName { font-size: clamp(2.4rem, 14vw, 3.5rem); }
+  .logoImg { width: clamp(132px, 43vw, 166px); }
+  .brandName { font-size: clamp(2.45rem, 14vw, 3.45rem); }
   .heroLine { font-size: clamp(1.2rem, 7vw, 1.65rem); }
   .tagline { border-radius: 22px; line-height: 1.2; }
-  .trustBadge { width: min(100%, 310px); }
   .buttons { flex-direction: column; align-items: center; }
   .btnPrimary, .btnSecondary { width: 100%; justify-content: center; max-width: 280px; }
 }

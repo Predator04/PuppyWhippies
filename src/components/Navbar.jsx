@@ -35,6 +35,25 @@ export default function Navbar() {
       if (e.key === 'Escape') {
         setMenuOpen(false)
         menuButtonRef.current?.focus()
+        return
+      }
+
+      if (e.key === 'Tab') {
+        const focusable = navRef.current?.querySelectorAll(
+          'a[href], button:not([disabled])'
+        )
+        if (!focusable?.length) return
+
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
       }
     }
 

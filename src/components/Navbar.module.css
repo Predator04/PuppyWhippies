@@ -103,7 +103,7 @@
 .cta {
   background:
     linear-gradient(180deg, rgba(255,255,255,0.42) 0 22%, transparent 23%),
-    linear-gradient(135deg, var(--pink), var(--purple), var(--teal)) !important;
+    linear-gradient(135deg, #cf0054 0%, #6a20bd 72%, #046c82 100%) !important;
   color: white !important;
   border-radius: 999px !important;
   padding: 8px 20px !important;
@@ -203,7 +203,9 @@
   .logoText {
     font-size: clamp(1rem, 7vw, 1.18rem);
     max-width: calc(100vw - 116px);
-    overflow-wrap: anywhere;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
   }
 
   .hamburger {

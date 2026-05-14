@@ -136,12 +136,19 @@
 
 .linkCol a,
 .linkCol span {
+  display: inline-flex;
+  align-items: center;
   font-family: var(--font-body);
   font-size: 0.9rem;
   color: #5a235f;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.2s;
+}
+
+.linkCol a {
+  min-height: 44px;
+  padding: 6px 0;
 }
 
 .linkCol a:hover {
@@ -173,10 +180,7 @@
 }
 
 @media (max-width: 600px) {
-  .links { grid-template-columns: 1fr 1fr 1fr; }
+  .links { grid-template-columns: 1fr; gap: 24px; }
+  .linkCol { gap: 4px; }
   .bottom { flex-direction: column; text-align: center; }
-}
-
-@media (max-width: 420px) {
-  .links { grid-template-columns: 1fr; }
 }
