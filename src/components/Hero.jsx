@@ -5,7 +5,7 @@ export default function Hero() {
     <section id="home" className={styles.hero}>
       <div className={styles.inner}>
         <div className={styles.logoWrap}>
-          <img src="/logo.jpeg" alt="Puppy Whippies" className={styles.logoImg} />
+          <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.logoImg} />
         </div>
 
         <h1 className={styles.brandName}>
@@ -25,7 +25,7 @@ export default function Hero() {
         </div>
 
         <p className={styles.sub}>
-          Pick a pilot sample cup, tell us your city, and we will confirm flavor, serving notes,
+          Pick a pilot sample cup in the Las Vegas area, and we will confirm flavor, serving notes,
           pickup or delivery fit, and next batch timing.
         </p>
 

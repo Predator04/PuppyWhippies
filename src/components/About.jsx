@@ -6,7 +6,7 @@ export default function About() {
       <div className={styles.container}>
         <div className={styles.imageSide}>
           <div className={styles.imgWrap}>
-            <img src="/logo.jpeg" alt="Puppy Whippies" className={styles.img} />
+            <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.img} />
             <div className={styles.bubble1}>🐾 Made with Love</div>
             <div className={styles.bubble2}>Ingredient Details 🌿</div>
           </div>
@@ -34,7 +34,7 @@ export default function About() {
               { icon: '🍓', label: 'Ingredient Details' },
               { icon: '🚫', label: 'No Payment on Site' },
               { icon: '🐶', label: 'Dog-Loving Families' },
-              { icon: '📍', label: 'Local Availability' },
+              { icon: '📍', label: 'Las Vegas Area' },
             ].map(p => (
               <div key={p.label} className={styles.pillar}>
                 <span className={styles.pillarIcon} aria-hidden="true">{p.icon}</span>

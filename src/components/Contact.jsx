@@ -82,15 +82,15 @@ export default function Contact() {
             <span className="bubble-teal">Flavor</span>
           </h2>
           <p className={styles.body}>
-            Request a pilot sample cup for your pup. Add your city or neighborhood so we can confirm whether pickup
-            or delivery is in range. No payment is collected here.
+            Request a pilot sample cup for your pup in the Las Vegas area. Add your neighborhood so we can confirm
+            whether pickup or delivery is in range. No payment is collected here.
           </p>
 
           <div className={styles.contactInfo}>
             {[
-              { icon: '🌐', label: 'Local pilot batches by request' },
+              { icon: '🌐', label: 'Las Vegas area pilot batches by request' },
               { icon: '📧', label: 'hello@puppywhippies.com', href: 'mailto:hello@puppywhippies.com' },
-              { icon: '📍', label: 'Service area confirmed from your city or neighborhood' },
+              { icon: '📍', label: 'Pickup or delivery fit confirmed around Las Vegas' },
             ].map(c => (
               <div key={c.label} className={styles.contactItem}>
                 <span className={styles.contactIcon}>{c.icon}</span>
@@ -174,13 +174,13 @@ export default function Contact() {
             </div>
 
             <div className={styles.field}>
-              <label htmlFor="contact-area">Your City or Neighborhood</label>
+              <label htmlFor="contact-area">Your Las Vegas Neighborhood</label>
               <input
                 id="contact-area"
                 name="area"
                 value={form.area}
                 onChange={handleChange}
-                placeholder="City or neighborhood"
+                placeholder="Summerlin, Henderson, Downtown, etc."
                 required
               />
             </div>
@@ -222,7 +222,7 @@ export default function Contact() {
             </div>
 
             <p className={styles.formNote}>
-              This starts an email request only. We confirm ingredients, serving notes, service area, and timing before
+              This starts an email request only. We confirm ingredients, serving notes, Las Vegas area fit, and timing before
               any pickup, delivery, or payment. Your details are only used to reply about Puppy Whippies availability.
             </p>
 

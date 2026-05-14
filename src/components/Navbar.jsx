@@ -75,7 +75,7 @@ export default function Navbar() {
   return (
     <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
       <a href="#home" className={styles.logo}>
-        <img src="/logo.jpeg" alt="Puppy Whippies" className={styles.logoImg} />
+        <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.logoImg} />
         <span className={styles.logoText}>
           <span className={styles.logoPink}>Pupp</span><span className={styles.logoTeal}>y</span>{' '}
           <span className={styles.logoPurple}>Whippies</span>

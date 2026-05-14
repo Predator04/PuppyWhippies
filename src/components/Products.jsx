@@ -96,7 +96,7 @@ export default function Products() {
             </h2>
             <p className={styles.subtitle}>
               Choose a pilot sample cup. Each request starts with flavor fit, storage notes, serving guidance,
-              and local pickup or delivery timing.
+              and Las Vegas area pickup or delivery timing.
             </p>
           </div>
         </Reveal>

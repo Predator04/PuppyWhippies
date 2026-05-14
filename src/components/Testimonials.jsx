@@ -5,7 +5,7 @@ const details = [
   {
     name: 'Current Batch',
     avatar: '🌿',
-    text: 'Puppy Whippies is in pilot-batch mode. Availability, flavor, serving size, and local service area are confirmed by email before anything moves forward.',
+    text: 'Puppy Whippies is in Las Vegas area pilot-batch mode. Availability, flavor, serving size, and pickup or delivery fit are confirmed by email before anything moves forward.',
     tag: 'Pilot status',
   },
   {

@@ -1,7 +1,7 @@
 import styles from './Marquee.module.css'
 
 const items = [
-  '🍓 Fruity', '🐾 Pup-Loving', '☁️ Fluffy', '📍 Local Requests',
+  '🍓 Fruity', '🐾 Pup-Loving', '☁️ Fluffy', '📍 Las Vegas Area',
   '🫐 Blueberry', '💝 Made with Love', '🥕 Veggie Ideas', '🐶 Pup-Ready',
   '🌿 Ingredient Details', '🐶 Dog Families', '🍇 Berry Good', '✨ Small Batch',
 ]

@@ -35,8 +35,8 @@ const features = [
   {
     icon: '🚚',
     color: 'teal',
-    title: 'Local-First Requests',
-    desc: 'Ask about current availability, pickup, delivery, and the best way to try the flavors near you.',
+    title: 'Las Vegas Area Requests',
+    desc: 'Ask about current availability, pickup, delivery, and the best way to try the flavors around Las Vegas.',
   },
 ]
 

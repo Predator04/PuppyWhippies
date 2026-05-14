@@ -29,7 +29,7 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.brand}>
-            <img src="/logo.jpeg" alt="Puppy Whippies" className={styles.logo} />
+            <img src="/logo-transparent.png" alt="Puppy Whippies" className={styles.logo} />
             <div>
               <div className={styles.brandName}>
                 <span className={styles.brandPink}>Puppy</span>{' '}
@@ -58,7 +58,7 @@ export default function Footer() {
               <h4>Request Notes</h4>
               <span>No payment is collected on this site.</span>
               <span>Ingredients are confirmed by email.</span>
-              <span>Pickup or delivery is arranged per batch.</span>
+              <span>Las Vegas area pickup or delivery is arranged per batch.</span>
             </div>
           </div>
         </div>

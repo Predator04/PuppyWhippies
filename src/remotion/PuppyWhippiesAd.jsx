@@ -104,16 +104,16 @@ const SceneShell = ({ children, tint = 0 }) => {
         }}
       />
       <Img
-        src={staticFile('logo.jpeg')}
+        src={staticFile('logo-transparent.png')}
         style={{
           position: 'absolute',
           top: 34,
           left: 34,
           width: 124,
           height: 124,
-          borderRadius: 22,
+          borderRadius: 0,
           objectFit: 'contain',
-          boxShadow: '0 18px 36px rgba(53,16,97,0.22)',
+          filter: 'drop-shadow(0 18px 28px rgba(53,16,97,0.22))',
           opacity: 0.96,
           transform: `rotate(${Math.sin(frame / 26) * 2}deg)`,
           zIndex: 4,
@@ -321,17 +321,17 @@ export const PuppyWhippiesAd = () => {
       <AbsoluteFill style={{ opacity: scene1Out }}>
         <FruitBurst start={8} />
         <Img
-          src={staticFile('logo.jpeg')}
+          src={staticFile('logo-transparent.png')}
           style={{
             position: 'absolute',
             top: 96,
             left: 346,
             width: 388,
             height: 388,
-            borderRadius: 42,
+            borderRadius: 0,
             objectFit: 'contain',
             transform: `scale(${logoPop}) rotate(${logoSpin}deg)`,
-            boxShadow: '0 34px 80px rgba(53,16,97,0.32)',
+            filter: 'drop-shadow(0 34px 42px rgba(53,16,97,0.32))',
           }}
         />
         <div
@@ -388,24 +388,24 @@ export const PuppyWhippiesAd = () => {
             lineHeight: 1.18,
           }}
         >
-          We confirm ingredients, serving notes, and local availability first.
+          We confirm ingredients, serving notes, and Las Vegas area availability first.
         </div>
       </AbsoluteFill>
 
       <AbsoluteFill style={{ opacity: scene3In }}>
         <FruitBurst start={300} />
         <Img
-          src={staticFile('logo.jpeg')}
+          src={staticFile('logo-transparent.png')}
           style={{
             position: 'absolute',
             top: 112,
             left: 368,
             width: 344,
             height: 344,
-            borderRadius: 36,
+            borderRadius: 0,
             objectFit: 'contain',
             transform: `scale(${finalLogo})`,
-            boxShadow: '0 38px 90px rgba(53,16,97,0.34)',
+            filter: 'drop-shadow(0 38px 46px rgba(53,16,97,0.34))',
           }}
         />
         <div
