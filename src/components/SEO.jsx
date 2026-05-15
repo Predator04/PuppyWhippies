@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useLanguage } from '../i18n'
 
 const SITE_URL = 'https://puppywhippies.com'
 const LOGO_URL = `${SITE_URL}/logo-web.png`
@@ -14,8 +15,11 @@ const setMeta = (selector, attrs) => {
 }
 
 export default function SEO({ title, description, path = '/', schema = [] }) {
+  const { language } = useLanguage()
+
   useEffect(() => {
-    const canonicalUrl = `${SITE_URL}${path === '/' ? '/' : `${path}/`}`
+    const prefix = language === 'es' && window.location.pathname.startsWith('/es') ? '/es' : ''
+    const canonicalUrl = `${SITE_URL}${prefix}${path === '/' ? '/' : `${path}/`}`
     const fullTitle = title.includes('Puppy Whippies') ? title : `${title} | Puppy Whippies`
     const graph = [
       {
@@ -61,7 +65,7 @@ export default function SEO({ title, description, path = '/', schema = [] }) {
       document.head.appendChild(jsonLd)
     }
     jsonLd.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
-  }, [description, path, schema, title])
+  }, [description, language, path, schema, title])
 
   return null
 }

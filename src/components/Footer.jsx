@@ -1,6 +1,11 @@
+import { useLanguage } from '../i18n'
 import styles from './Footer.module.css'
 
 export default function Footer() {
+  const { c, href } = useLanguage()
+  const flavorLinks = ['/flavors/', '/flavors/', '/flavors/', '/request/'].map(href)
+  const companyLinks = ['/about/', '/las-vegas-dog-treats/', '/ingredients/', '/request/'].map(href)
+
   return (
     <footer className={styles.footer}>
       <div className={styles.wave} aria-hidden="true">
@@ -19,40 +24,35 @@ export default function Footer() {
                 <span className={styles.brandPink}>Puppy</span>{' '}
                 <span className={styles.brandPurple}>Whippies</span>
               </div>
-              <p className={styles.tagline}>Fruity * Freeze-Dried * All Natural</p>
+              <p className={styles.tagline}>{c.footer.tagline}</p>
               <p className={styles.domain}>puppywhippies.com</p>
             </div>
           </div>
 
           <div className={styles.links}>
             <div className={styles.linkCol}>
-              <h4>Flavors</h4>
-              <a href="/flavors/">Flavor Lineup</a>
-              <a href="/flavors/">Berry Flavors</a>
-              <a href="/flavors/">Veggie Flavors</a>
-              <a href="/request/">Request Info</a>
+              <h4>{c.footer.flavors}</h4>
+              {c.footer.flavorLinks.map((label, index) => (
+                <a href={flavorLinks[index]} key={label}>{label}</a>
+              ))}
             </div>
             <div className={styles.linkCol}>
-              <h4>Company</h4>
-              <a href="/about/">Our Story</a>
-              <a href="/las-vegas-dog-treats/">Las Vegas Dog Treats</a>
-              <a href="/ingredients/">Ingredients</a>
-              <a href="/request/">Contact</a>
+              <h4>{c.footer.company}</h4>
+              {c.footer.companyLinks.map((label, index) => (
+                <a href={companyLinks[index]} key={label}>{label}</a>
+              ))}
             </div>
             <div className={styles.linkCol}>
-              <h4>Request Notes</h4>
-              <span>No payment is collected on this site.</span>
-              <span>All-natural ingredients are confirmed by email.</span>
-              <span>Las Vegas area pickup or delivery is arranged per freeze-dried batch.</span>
+              <h4>{c.footer.notes}</h4>
+              {c.footer.noteItems.map(item => <span key={item}>{item}</span>)}
             </div>
           </div>
         </div>
 
         <div className={styles.bottom}>
-          <p>Copyright 2026 Puppy Whippies. Made with love in the Las Vegas area. All rights reserved.</p>
+          <p>{c.footer.copyright}</p>
           <p className={styles.legal}>
-            Email requests are used only to reply about Puppy Whippies availability. Treats are not a veterinary
-            product; supervise pets while serving.
+            {c.footer.legal}
           </p>
         </div>
       </div>

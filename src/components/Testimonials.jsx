@@ -1,60 +1,38 @@
+import { useLanguage } from '../i18n'
 import styles from './Testimonials.module.css'
 import Reveal from './Reveal'
 
-const details = [
-  {
-    name: 'Current Batch',
-    avatar: '🌿',
-    text: 'Puppy Whippies is in Las Vegas area freeze-dried pilot-batch mode. Availability, flavor, serving size, and pickup or delivery fit are confirmed by email before anything moves forward.',
-    tag: 'Pilot status',
-  },
-  {
-    name: 'Ingredient Check',
-    avatar: '🥄',
-    text: 'Example batches use all-natural fruit or veggie-forward ingredients and are freeze-dried for a light treat texture. Current ingredients are confirmed before pickup or delivery.',
-    tag: 'Details first',
-  },
-  {
-    name: 'No Site Checkout',
-    avatar: '📬',
-    text: 'There is no cart or payment on this site yet. The form opens an email request so details can be confirmed personally.',
-    tag: 'No payment here',
-  },
-  {
-    name: 'Serving Note',
-    avatar: '🍓',
-    text: 'Treats are not a meal replacement or veterinary product. Ask your vet if your pet has dietary needs, and supervise pets while serving.',
-    tag: 'Pet care',
-  },
-]
+const avatars = ['IN', 'FD', '@', 'OK']
 
 export default function Testimonials() {
+  const { c } = useLanguage()
+
   return (
     <section className={styles.section}>
       <div className={styles.container}>
         <div className={styles.header}>
-          <span className={styles.eyebrow}>💬 Good to Know</span>
+          <span className={styles.eyebrow}>{c.details.eyebrow}</span>
           <h2 className={styles.title}>
-            <span className="bubble-pink">Before</span>{' '}
-            <span className="bubble-purple">You</span>{' '}
-            <span className="bubble-teal">Request</span>
+            <span className="bubble-pink">{c.details.title[0]}</span>{' '}
+            <span className="bubble-purple">{c.details.title[1]}</span>{' '}
+            <span className="bubble-teal">{c.details.title[2]}</span>
           </h2>
         </div>
 
         <div className={styles.grid}>
-          {details.map((item, i) => (
-            <Reveal key={i} variant="up" delay={i * 100}>
-            <div className={styles.card}>
-              <div className={styles.stars} aria-hidden="true">{item.avatar}</div>
-              <p className={styles.text}>{item.text}</p>
-              <div className={styles.author}>
-                <span className={styles.avatar} aria-hidden="true">{item.avatar}</span>
-                <div>
-                  <div className={styles.name}>{item.name}</div>
-                  <div className={styles.tag}>{item.tag}</div>
+          {c.details.items.map(([name, text, tag], i) => (
+            <Reveal key={name} variant="up" delay={i * 100}>
+              <div className={styles.card}>
+                <div className={styles.stars} aria-hidden="true">{avatars[i]}</div>
+                <p className={styles.text}>{text}</p>
+                <div className={styles.author}>
+                  <span className={styles.avatar} aria-hidden="true">{avatars[i]}</span>
+                  <div>
+                    <div className={styles.name}>{name}</div>
+                    <div className={styles.tag}>{tag}</div>
+                  </div>
                 </div>
               </div>
-            </div>
             </Reveal>
           ))}
         </div>

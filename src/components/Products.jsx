@@ -1,21 +1,24 @@
 import { flavors, tagColors } from '../data/flavors'
+import { useLanguage } from '../i18n'
 import styles from './Products.module.css'
 import Reveal from './Reveal'
 
 export default function Products() {
+  const { c, language, href } = useLanguage()
+  const localized = (flavor, field) => language === 'es' ? flavor[`${field}Es`] || flavor[field] : flavor[field]
+
   return (
     <section id="products" className={styles.section}>
       <div className={styles.container}>
         <Reveal variant="up">
           <div className={styles.header}>
-            <span className={styles.eyebrow}>Our Treats</span>
+            <span className={styles.eyebrow}>{c.products.eyebrow}</span>
             <h2 className={styles.title}>
-              <span className="bubble-pink">Flavor</span>{' '}
-              <span className="bubble-purple">Lineup</span>
+              <span className="bubble-pink">{c.products.titleA}</span>{' '}
+              <span className="bubble-purple">{c.products.titleB}</span>
             </h2>
             <p className={styles.subtitle}>
-              Choose a freeze-dried pilot flavor. Each request starts with flavor fit, all-natural ingredient notes, serving guidance,
-              and Las Vegas area pickup or delivery timing.
+              {c.products.subtitle}
             </p>
           </div>
         </Reveal>
@@ -37,24 +40,24 @@ export default function Products() {
                     color: tc.color,
                     borderColor: tc.border,
                   }}>
-                    {flavor.tag}
+                    {localized(flavor, 'tag')}
                   </span>
 
-                  <h3 className={styles.cardName}>{flavor.name}</h3>
-                  <p className={styles.cardDesc}>{flavor.desc}</p>
+                  <h3 className={styles.cardName}>{localized(flavor, 'name')}</h3>
+                  <p className={styles.cardDesc}>{localized(flavor, 'desc')}</p>
 
                   <div className={styles.cardFor}>
-                    {flavor.notes.map(note => (
+                    {localized(flavor, 'notes').map(note => (
                       <span key={note} className={styles.forBadge}>{note}</span>
                     ))}
                   </div>
 
-                  <p className={styles.cardDetail}>{flavor.detail}</p>
+                  <p className={styles.cardDetail}>{localized(flavor, 'detail')}</p>
 
                   <div className={styles.cardBottom}>
-                    <span className={styles.cardPrice}>Freeze-dried pilot batch</span>
-                    <a className={styles.addBtn} href={`/request/?flavor=${encodeURIComponent(flavor.name)}`}>
-                      Request Availability
+                    <span className={styles.cardPrice}>{c.products.batch}</span>
+                    <a className={styles.addBtn} href={`${href('/request/')}?flavor=${encodeURIComponent(flavor.name)}`}>
+                      {c.products.cta}
                     </a>
                   </div>
                 </div>

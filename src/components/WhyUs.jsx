@@ -1,43 +1,14 @@
+import { useLanguage } from '../i18n'
 import styles from './WhyUs.module.css'
 import Reveal from './Reveal'
 
 const features = [
-  {
-    icon: '🌿',
-    color: 'teal',
-    title: 'Ingredients Before Pickup',
-    desc: 'All-natural batch ingredients are shared before pickup, delivery, or payment, so there are no mystery treats.',
-  },
-  {
-    icon: '🐶',
-    color: 'pink',
-    title: 'Made for Dog Families',
-    desc: 'Designed for pet parents who want a special treat moment and clear serving guidance before trying it.',
-  },
-  {
-    icon: '👧',
-    color: 'purple',
-    title: 'Clear Fit Check',
-    desc: 'Tell us about your pup, allergies, and preferences so we can help you decide whether a batch makes sense.',
-  },
-  {
-    icon: '☁️',
-    color: 'pink',
-    title: 'Freeze-Dried Texture',
-    desc: 'Light freeze-dried treats with serving size and batch notes shared before pickup or delivery.',
-  },
-  {
-    icon: '💝',
-    color: 'purple',
-    title: 'Made with Love',
-    desc: 'Small-batch preparation keeps the brand personal while the flavor lineup is still growing.',
-  },
-  {
-    icon: '🚚',
-    color: 'teal',
-    title: 'Las Vegas Area Requests',
-    desc: 'Ask about current availability, pickup, delivery, and the best way to try the flavors around Las Vegas.',
-  },
+  { icon: 'IN', color: 'teal' },
+  { icon: 'PW', color: 'pink' },
+  { icon: 'OK', color: 'purple' },
+  { icon: 'FD', color: 'pink' },
+  { icon: 'LV', color: 'purple' },
+  { icon: '702', color: 'teal' },
 ]
 
 const colorMap = {
@@ -47,55 +18,50 @@ const colorMap = {
 }
 
 export default function WhyUs() {
+  const { c } = useLanguage()
+
   return (
     <section id="why-us" className={styles.section}>
       <div className={styles.container}>
         <Reveal variant="up">
           <div className={styles.header}>
-            <span className={styles.eyebrow}>🐾 Why Puppy Whippies?</span>
+            <span className={styles.eyebrow}>{c.why.eyebrow}</span>
             <h2 className={styles.title}>
-              <span className="bubble-pink">The</span>{' '}
-              <span className="bubble-purple">Whippie</span>{' '}
-              <span className="bubble-teal">Difference</span>
+              <span className="bubble-pink">{c.why.title[0]}</span>{' '}
+              <span className="bubble-purple">{c.why.title[1]}</span>{' '}
+              <span className="bubble-teal">{c.why.title[2]}</span>
             </h2>
-            <p className={styles.subtitle}>
-              A playful freeze-dried treat concept for families who love their dogs deeply and want the details handled with care.
-            </p>
+            <p className={styles.subtitle}>{c.why.subtitle}</p>
           </div>
         </Reveal>
 
         <div className={styles.grid}>
           {features.map((f, i) => {
-            const c = colorMap[f.color]
+            const color = colorMap[f.color]
+            const [title, desc] = c.why.features[i]
             return (
               <Reveal key={i} variant="up" delay={i * 80}>
-              <div className={styles.card}>
-                <div className={styles.iconWrap} style={{ background: c.bg, borderColor: c.border }}>
-                  <span className={styles.icon}>{f.icon}</span>
+                <div className={styles.card}>
+                  <div className={styles.iconWrap} style={{ background: color.bg, borderColor: color.border }}>
+                    <span className={styles.icon}>{f.icon}</span>
+                  </div>
+                  <h3 className={styles.cardTitle} style={{ color: color.icon }}>{title}</h3>
+                  <p className={styles.cardDesc}>{desc}</p>
                 </div>
-                <h3 className={styles.cardTitle} style={{ color: c.icon }}>{f.title}</h3>
-                <p className={styles.cardDesc}>{f.desc}</p>
-              </div>
               </Reveal>
             )
           })}
         </div>
 
-        {/* Stats banner */}
         <Reveal variant="scale">
-        <div className={styles.stats}>
-          {[
-            { num: 'Pilot', label: 'Batch Status' },
-            { num: '1:1', label: 'Request Help' },
-            { num: 'Natural', label: 'Ingredients' },
-            { num: 'No', label: 'Online Payment' },
-          ].map((s, i) => (
-            <div key={i} className={styles.stat}>
-              <span className={styles.statNum}>{s.num}</span>
-              <span className={styles.statLabel}>{s.label}</span>
-            </div>
-          ))}
-        </div>
+          <div className={styles.stats}>
+            {c.why.stats.map(([num, label], i) => (
+              <div key={i} className={styles.stat}>
+                <span className={styles.statNum}>{num}</span>
+                <span className={styles.statLabel}>{label}</span>
+              </div>
+            ))}
+          </div>
         </Reveal>
       </div>
     </section>

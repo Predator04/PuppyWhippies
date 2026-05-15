@@ -9,6 +9,7 @@ import Products from './components/Products'
 import SEO from './components/SEO'
 import Testimonials from './components/Testimonials'
 import WhyUs from './components/WhyUs'
+import { useLanguage } from './i18n'
 import {
   AboutPage,
   FlavorsPage,
@@ -42,11 +43,13 @@ function usePath() {
 }
 
 function HomePage() {
+  const { c } = useLanguage()
+
   return (
     <>
       <SEO
-        title="Puppy Whippies - Freeze-Dried Dog Treats"
-        description="Puppy Whippies is a playful Las Vegas area pilot-batch dog treat brand with freeze-dried flavors, all-natural ingredient confirmation, and pickup or delivery fit by email."
+        title={c.pages.homeTitle}
+        description={c.pages.homeDescription}
         path="/"
       />
       <main id="main" tabIndex="-1">
@@ -63,13 +66,15 @@ function HomePage() {
 }
 
 export default function App() {
+  const { c } = useLanguage()
   const rawPath = usePath()
-  const path = rawPath.length > 1 ? rawPath.replace(/\/$/, '') : rawPath
+  const languagePath = rawPath.replace(/^\/es(?=\/|$)/, '') || '/'
+  const path = languagePath.length > 1 ? languagePath.replace(/\/$/, '') : languagePath
   const page = routes[path] || <HomePage />
 
   return (
     <>
-      <a className="skip-link" href="#main">Skip to content</a>
+      <a className="skip-link" href="#main">{c.pages.skipLink}</a>
       <Navbar />
       {page}
       <Footer />

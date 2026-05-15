@@ -1,13 +1,9 @@
+import { useLanguage } from '../i18n'
 import styles from './Marquee.module.css'
 
-const items = [
-  'Fruity', 'Pup-Loving', 'Freeze-Dried', 'Las Vegas Area',
-  'Blueberry', 'Made with Love', 'Veggie Ideas', 'Pup-Ready',
-  'All-Natural Ingredients', 'Dog Families', 'Berry Good', 'Small Batch',
-]
-
 export default function Marquee() {
-  const doubled = [...items, ...items]
+  const { c } = useLanguage()
+  const doubled = [...c.marquee, ...c.marquee]
 
   return (
     <div className={styles.wrapper} aria-hidden="true">

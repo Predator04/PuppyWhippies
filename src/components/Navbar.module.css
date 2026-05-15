@@ -83,7 +83,8 @@
   list-style: none;
 }
 
-.links a {
+.links a,
+.langToggle {
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.95rem;
@@ -94,7 +95,14 @@
   transition: all 0.2s;
 }
 
-.links a:hover {
+.langToggle {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.links a:hover,
+.langToggle:hover {
   background: linear-gradient(180deg, #fffdf9 0%, #ffe3ef 100%);
   color: var(--pink);
   box-shadow: 0 4px 0 rgba(248,58,122,0.16);
@@ -176,7 +184,8 @@
     visibility: visible;
     pointer-events: auto;
   }
-  .links a { display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px 14px; min-height: 44px; }
+  .links a,
+  .langToggle { display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px 14px; min-height: 44px; width: 100%; }
   .hamburger[aria-expanded="true"] span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }

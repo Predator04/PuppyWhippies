@@ -1,6 +1,9 @@
+import { useLanguage } from '../i18n'
 import styles from './Hero.module.css'
 
 export default function Hero() {
+  const { c, href } = useLanguage()
+
   return (
     <section id="home" className={styles.hero}>
       <div className={styles.inner}>
@@ -14,24 +17,23 @@ export default function Hero() {
           <span className="bubble-purple">Whippies</span>
         </h1>
 
-        <p className={styles.heroLine}>Small-batch freeze-dried dog treats made with all-natural ingredients.</p>
+        <p className={styles.heroLine}>{c.hero.line}</p>
 
         <div className={styles.tagline}>
-          <span>Fruity</span>
+          <span>{c.hero.tags[0]}</span>
           <span className={styles.dot}>*</span>
-          <span>Freeze-Dried</span>
+          <span>{c.hero.tags[1]}</span>
           <span className={styles.dot}>*</span>
-          <span>Delicious</span>
+          <span>{c.hero.tags[2]}</span>
         </div>
 
         <p className={styles.sub}>
-          Pick a pilot flavor in the Las Vegas area, and we will confirm ingredients, serving notes,
-          pickup or delivery fit, and next batch timing.
+          {c.hero.sub}
         </p>
 
         <div className={styles.buttons}>
-          <a href="/flavors/" className={styles.btnPrimary}>Explore Flavors</a>
-          <a href="/about/" className={styles.btnSecondary}>Our Story</a>
+          <a href={href('/flavors/')} className={styles.btnPrimary}>{c.hero.flavors}</a>
+          <a href={href('/about/')} className={styles.btnSecondary}>{c.hero.story}</a>
         </div>
       </div>
 

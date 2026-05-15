@@ -1,49 +1,40 @@
+import { useLanguage } from '../i18n'
 import styles from './About.module.css'
 
 export default function About() {
+  const { c, href } = useLanguage()
+  const pillarIcons = ['PW', 'No', 'LV', '702']
+
   return (
     <section id="about" className={styles.section}>
       <div className={styles.container}>
         <div className={styles.imageSide}>
           <div className={styles.imgWrap}>
             <img src="/logo-web.png" alt="Puppy Whippies" className={styles.img} />
-            <div className={styles.bubble1}>Made with Love</div>
-            <div className={styles.bubble2}>Ingredient Details</div>
+            <div className={styles.bubble1}>{c.about.bubble1}</div>
+            <div className={styles.bubble2}>{c.about.bubble2}</div>
           </div>
         </div>
 
         <div className={styles.textSide}>
-          <span className={styles.eyebrow}>Our Story</span>
+          <span className={styles.eyebrow}>{c.about.eyebrow}</span>
           <h2 className={styles.title}>
-            <span className="bubble-purple">Why We</span>{' '}
-            <span className="bubble-pink">Started</span>
+            <span className="bubble-purple">{c.about.titleA}</span>{' '}
+            <span className="bubble-pink">{c.about.titleB}</span>
           </h2>
-          <p className={styles.body}>
-            Puppy Whippies was born out of pure love for dogs and the families who spoil them.
-            We wanted a cheerful freeze-dried dog treat ritual that adults can supervise and everyone can enjoy,
-            without pretending every pet or household needs the same thing.
-          </p>
-          <p className={styles.body}>
-            Every Puppy Whippie request starts with the practical details: all-natural ingredients, serving size,
-            availability, and whether the freeze-dried batch is a good fit for your pup. We are still refining the
-            lineup, so we keep availability and serving guidance personal.
-          </p>
+          <p className={styles.body}>{c.about.body1}</p>
+          <p className={styles.body}>{c.about.body2}</p>
 
           <div className={styles.pillars}>
-            {[
-              { icon: 'PW', label: 'Ingredient Details' },
-              { icon: 'No', label: 'No Payment on Site' },
-              { icon: 'LV', label: 'Dog-Loving Families' },
-              { icon: '702', label: 'Las Vegas Area' },
-            ].map(p => (
-              <div key={p.label} className={styles.pillar}>
-                <span className={styles.pillarIcon} aria-hidden="true">{p.icon}</span>
-                <span className={styles.pillarLabel}>{p.label}</span>
+            {c.about.pillars.map((label, index) => (
+              <div key={label} className={styles.pillar}>
+                <span className={styles.pillarIcon} aria-hidden="true">{pillarIcons[index]}</span>
+                <span className={styles.pillarLabel}>{label}</span>
               </div>
             ))}
           </div>
 
-          <a href="/request/" className={styles.cta}>Request Availability</a>
+          <a href={href('/request/')} className={styles.cta}>{c.about.cta}</a>
         </div>
       </div>
     </section>

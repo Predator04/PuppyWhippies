@@ -1,15 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
+import { useLanguage } from '../i18n'
 import styles from './Navbar.module.css'
 
 const navItems = [
-  ['Home', '/'],
-  ['Flavors', '/flavors/'],
-  ['Las Vegas', '/las-vegas-dog-treats/'],
-  ['Ingredients', '/ingredients/'],
-  ['About', '/about/'],
+  ['home', '/'],
+  ['flavors', '/flavors/'],
+  ['lasVegas', '/las-vegas-dog-treats/'],
+  ['ingredients', '/ingredients/'],
+  ['about', '/about/'],
 ]
 
 export default function Navbar() {
+  const { c, language, toggleLanguage, href } = useLanguage()
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const menuId = 'primary-navigation'
@@ -78,7 +80,7 @@ export default function Navbar() {
 
   return (
     <nav ref={navRef} className={`${styles.nav} ${scrolled ? styles.scrolled : ''}`}>
-      <a href="/" className={styles.logo}>
+      <a href={href('/')} className={styles.logo}>
         <img src="/logo-web.png" alt="Puppy Whippies" className={styles.logoImg} />
         <span className={styles.logoText}>
           <span className={styles.logoPink}>Pupp</span><span className={styles.logoTeal}>y</span>{' '}
@@ -90,7 +92,7 @@ export default function Navbar() {
         ref={menuButtonRef}
         className={styles.hamburger}
         onClick={() => setMenuOpen(!menuOpen)}
-        aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+        aria-label={menuOpen ? c.nav.closeMenu : c.nav.openMenu}
         aria-expanded={menuOpen}
         aria-controls={menuId}
       >
@@ -98,17 +100,32 @@ export default function Navbar() {
       </button>
 
       <ul id={menuId} className={`${styles.links} ${menuOpen ? styles.open : ''}`} data-open={menuOpen}>
-        {navItems.map(([label, href], index) => (
-          <li key={label}>
-            <a ref={index === 0 ? firstLinkRef : undefined} href={href} onClick={() => setMenuOpen(false)}>
-              {label}
+        {navItems.map(([key, path], index) => (
+          <li key={key}>
+            <a ref={index === 0 ? firstLinkRef : undefined} href={href(path)} onClick={() => setMenuOpen(false)}>
+              {c.nav[key]}
             </a>
           </li>
         ))}
         <li>
-          <a href="/request/" className={styles.cta} onClick={() => setMenuOpen(false)}>
-            Request Availability
+          <a href={href('/request/')} className={styles.cta} onClick={() => setMenuOpen(false)}>
+            {c.nav.request}
           </a>
+        </li>
+        <li>
+          <button
+            type="button"
+            className={styles.langToggle}
+            onClick={() => {
+              toggleLanguage()
+              setMenuOpen(false)
+            }}
+            aria-label={language === 'es' ? 'Switch to English' : 'Cambiar a español'}
+            aria-pressed={language === 'es'}
+            lang={language === 'es' ? 'en' : 'es'}
+          >
+            {c.nav.switchTo}
+          </button>
         </li>
       </ul>
     </nav>
