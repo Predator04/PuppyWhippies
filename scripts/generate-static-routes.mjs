@@ -251,8 +251,11 @@ const fallbackContent = page => {
       : ['Privacy Policy', 'We use request details only to reply about availability, ingredients, serving notes, and Las Vegas area pickup or delivery fit.'],
   }
   const [heading, body] = blocks[routeKey] || blocks['']
+  const requestHref = isSpanish ? '/es/request/' : '/request/'
+  const emailLabel = isSpanish ? 'Enviar correo' : 'Email Puppy Whippies'
+  const requestLabel = isSpanish ? 'Consultar disponibilidad' : 'Request Availability'
 
-  return `<main class="static-fallback" aria-label="${escapeHtml(heading)}"><h1>${escapeHtml(heading)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(body)}</p><p>${isSpanish ? 'Contacto' : 'Contact'}: hello@puppywhippies.com</p></main>`
+  return `<main class="static-fallback" aria-label="${escapeHtml(heading)}"><h1>${escapeHtml(heading)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(body)}</p><p>${isSpanish ? 'Contacto' : 'Contact'}: <a href="mailto:hello@puppywhippies.com">${emailLabel}</a> <a href="${requestHref}">${requestLabel}</a></p></main>`
 }
 
 const htmlForPage = (baseHtml, page) => {

@@ -419,7 +419,7 @@ export function LanguageProvider({ children }) {
     const languages = navigator.languages?.length ? navigator.languages : [navigator.language]
     const shouldUseSpanish = saved === 'es' || (!saved && languages.some(isSpanish))
 
-    if (shouldUseSpanish && !isSpanishPath(window.location.pathname)) {
+    if (shouldUseSpanish && window.location.pathname === '/') {
       navigateToLanguage('es')
       setLanguageState('es')
       localStorage.setItem(STORAGE_KEY, 'es')
