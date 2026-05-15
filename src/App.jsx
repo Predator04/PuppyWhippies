@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import About from './components/About'
+import Analytics from './components/Analytics'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
@@ -15,6 +16,7 @@ import {
   FlavorsPage,
   IngredientsPage,
   LocalDogTreatsPage,
+  PrivacyPage,
   RequestPage,
 } from './pages/SeoPages'
 
@@ -24,6 +26,7 @@ const routes = {
   '/ingredients': <IngredientsPage />,
   '/about': <AboutPage />,
   '/request': <RequestPage />,
+  '/privacy': <PrivacyPage />,
 }
 
 function usePath() {
@@ -74,6 +77,7 @@ export default function App() {
 
   return (
     <>
+      <Analytics />
       <a className="skip-link" href="#main">{c.pages.skipLink}</a>
       <Navbar />
       {page}

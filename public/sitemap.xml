@@ -1,39 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://puppywhippies.com/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/" />
+    <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://puppywhippies.com/flavors/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/flavors/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/flavors/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/flavors/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/flavors/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/flavors/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/flavors/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/flavors/" />
+    <lastmod>2026-05-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://puppywhippies.com/las-vegas-dog-treats/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/las-vegas-dog-treats/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/las-vegas-dog-treats/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/las-vegas-dog-treats/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/las-vegas-dog-treats/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/las-vegas-dog-treats/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/las-vegas-dog-treats/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/las-vegas-dog-treats/" />
+    <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://puppywhippies.com/ingredients/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/ingredients/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/ingredients/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/ingredients/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/ingredients/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/ingredients/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/ingredients/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/ingredients/" />
+    <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://puppywhippies.com/about/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/about/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/about/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/about/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/about/" />
+    <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://puppywhippies.com/request/</loc>
-    <lastmod>2026-05-14</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/request/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/request/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/request/" />
+    <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/request/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/request/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/request/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/request/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/privacy/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://puppywhippies.com/es/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en-US" href="https://puppywhippies.com/privacy/" />
+    <xhtml:link rel="alternate" hreflang="es-US" href="https://puppywhippies.com/es/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://puppywhippies.com/privacy/" />
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

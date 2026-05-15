@@ -8,7 +8,7 @@
 .skew {
   background:
     linear-gradient(180deg, rgba(255,255,255,0.25) 0 18%, transparent 19%),
-    linear-gradient(135deg, #cf0054 0%, #6a20bd 58%, #046c82 100%);
+    linear-gradient(135deg, #b90049 0%, #5a16b2 58%, #312064 100%);
   padding: 28px 0;
   border-top: 4px solid var(--sticker);
   border-bottom: 4px solid var(--sticker);

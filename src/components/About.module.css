@@ -161,7 +161,7 @@
   border-radius: 999px;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.42) 0 20%, transparent 21%),
-    linear-gradient(135deg, var(--purple), var(--pink), var(--teal));
+    linear-gradient(135deg, #5a16b2, #b90049, #312064);
   border: 3px solid var(--sticker);
   box-shadow: 0 8px 0 var(--purple-dark), 0 16px 30px rgba(139,79,192,0.34);
   width: fit-content;

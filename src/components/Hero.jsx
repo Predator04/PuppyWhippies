@@ -32,8 +32,8 @@ export default function Hero() {
         </p>
 
         <div className={styles.buttons}>
-          <a href={href('/flavors/')} className={styles.btnPrimary}>{c.hero.flavors}</a>
-          <a href={href('/about/')} className={styles.btnSecondary}>{c.hero.story}</a>
+          <a href={href('/request/')} className={styles.btnPrimary}>{c.nav.request}</a>
+          <a href={href('/flavors/')} className={styles.btnSecondary}>{c.hero.flavors}</a>
         </div>
       </div>
 

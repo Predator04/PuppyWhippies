@@ -142,7 +142,7 @@
   color: white;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.42) 0 20%, transparent 21%),
-    linear-gradient(135deg, #cf0054 0%, #6a20bd 72%, #046c82 100%);
+    linear-gradient(135deg, #b90049 0%, #5a16b2 72%, #312064 100%);
   border: 3px solid var(--sticker);
   box-shadow: 0 8px 0 var(--pink-dark), 0 16px 28px rgba(240,82,122,0.28);
 }

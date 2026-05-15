@@ -24,6 +24,8 @@ export default function Contact() {
   const { c, language } = useLanguage()
   const [form, setForm] = useState(initialForm)
   const [draftAttempted, setDraftAttempted] = useState(false)
+  const [sent, setSent] = useState(false)
+  const [copied, setCopied] = useState(false)
   const statusRef = useRef(null)
 
   const localizedFlavorName = flavor => (language === 'es' ? flavor.nameEs || flavor.name : flavor.name)
@@ -69,25 +71,82 @@ export default function Contact() {
     return () => window.removeEventListener('puppywhippies:flavor-request', handleFlavorRequest)
   }, [c.contact])
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    const subject = encodeURIComponent(c.contact.subject(form.name))
+  const requestBody = () => {
     const fields = c.contact.emailFields
-    const body = encodeURIComponent(
-      `${fields.name}: ${form.name}\n${fields.email}: ${form.email}\n${fields.flavor}: ${form.flavor}\n\n${fields.message}:\n${form.message}`
+    return (
+      `${fields.name}: ${form.name}\n${fields.email}: ${form.email}\n${fields.flavor}: ${flavorLabelFromValue(form.flavor)}\n\n${fields.message}:\n${form.message}`
       + `\n\n${fields.quantity}: ${form.quantity}\n${fields.area}: ${form.area || fields.missing}`
       + `\n${fields.date}: ${form.date || fields.flexible}\n${fields.notes}: ${form.notes || fields.none}`
     )
+  }
+
+  const copyRequest = async () => {
+    const text = `${c.contact.subject(form.name)}\n\n${requestBody()}`
+
+    try {
+      await navigator.clipboard.writeText(text)
+    } catch {
+      const textarea = document.createElement('textarea')
+      textarea.value = text
+      textarea.setAttribute('readonly', '')
+      textarea.style.position = 'fixed'
+      textarea.style.top = '-9999px'
+      document.body.appendChild(textarea)
+      textarea.select()
+      document.execCommand('copy')
+      textarea.remove()
+    }
+
+    setCopied(true)
+  }
+
+  const openEmailDraft = () => {
+    const subject = encodeURIComponent(c.contact.subject(form.name))
+    const body = encodeURIComponent(requestBody())
 
     window.location.href = `mailto:hello@puppywhippies.com?subject=${subject}&body=${body}`
     setDraftAttempted(true)
+    setSent(false)
+    setCopied(false)
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    setCopied(false)
+
+    const payload = {
+      name: form.name,
+      email: form.email,
+      flavor: flavorLabelFromValue(form.flavor),
+      quantity: form.quantity,
+      area: form.area,
+      date: form.date,
+      notes: form.notes,
+      message: form.message,
+      language,
+      source: window.location.href,
+    }
+
+    try {
+      const response = await fetch('/api/request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      if (!response.ok) throw new Error('Request endpoint unavailable')
+      setSent(true)
+      setDraftAttempted(false)
+    } catch {
+      openEmailDraft()
+    }
   }
 
   useEffect(() => {
-    if (draftAttempted) {
+    if (draftAttempted || sent) {
       statusRef.current?.focus()
     }
-  }, [draftAttempted])
+  }, [draftAttempted, sent])
 
   useEffect(() => {
     setForm(current => {
@@ -101,6 +160,8 @@ export default function Contact() {
 
   const resetForm = () => {
     setDraftAttempted(false)
+    setSent(false)
+    setCopied(false)
     setForm(initialForm)
   }
 
@@ -134,17 +195,26 @@ export default function Contact() {
           <form className={styles.form} onSubmit={handleSubmit}>
             <h3 className={styles.formTitle}>{c.contact.formTitle}</h3>
 
-            {draftAttempted && (
+            {(draftAttempted || sent) && (
               <div className={styles.success} role="status" aria-live="polite" tabIndex="-1" ref={statusRef}>
                 <div className={styles.successEmoji}>PW</div>
-                <h3>{c.contact.successTitle}</h3>
-                <p>
-                  {c.contact.successBody}{' '}
-                  <a href="mailto:hello@puppywhippies.com">hello@puppywhippies.com</a> {c.contact.successTail}
-                </p>
+                <h3>{sent ? c.contact.sentTitle : c.contact.successTitle}</h3>
+                {sent ? (
+                  <p>{c.contact.sentBody}</p>
+                ) : (
+                  <p>
+                    {c.contact.successBody}{' '}
+                    <a href="mailto:hello@puppywhippies.com">hello@puppywhippies.com</a> {c.contact.successTail}
+                  </p>
+                )}
                 <button className={styles.resetBtn} type="button" onClick={resetForm}>
                   {c.contact.clear}
                 </button>
+                {!sent && (
+                  <button className={styles.copyBtn} type="button" onClick={copyRequest}>
+                    {copied ? c.contact.copiedDetails : c.contact.copyDetails}
+                  </button>
+                )}
               </div>
             )}
 
@@ -254,6 +324,9 @@ export default function Contact() {
 
             <button type="submit" className={styles.submitBtn}>
               {c.contact.submit}
+            </button>
+            <button type="button" className={styles.copyBtn} onClick={copyRequest}>
+              {copied ? c.contact.copiedDetails : c.contact.copyDetails}
             </button>
           </form>
         </div>

@@ -4,6 +4,7 @@ import path from 'node:path'
 const distDir = path.resolve('dist')
 const siteUrl = 'https://puppywhippies.com'
 const imageUrl = `${siteUrl}/logo-web.png`
+const gscVerification = process.env.VITE_GSC_VERIFICATION
 
 const pages = [
   {
@@ -35,6 +36,11 @@ const pages = [
     route: 'request',
     title: 'Request Puppy Whippies Availability',
     description: 'Request Puppy Whippies Las Vegas area freeze-dried dog treat availability and confirm flavor, all-natural ingredients, serving notes, pickup, or delivery timing by email.',
+  },
+  {
+    route: 'privacy',
+    title: 'Privacy Policy | Puppy Whippies',
+    description: 'Read how Puppy Whippies uses email request details for Las Vegas area freeze-dried dog treat availability, ingredient confirmation, and pickup or delivery replies.',
   },
 ]
 
@@ -79,6 +85,13 @@ const spanishPages = [
     canonical: `${siteUrl}/es/request/`,
     title: 'Consultar disponibilidad de Puppy Whippies',
     description: 'Solicita disponibilidad de premios liofilizados Puppy Whippies en Las Vegas y confirma sabor, ingredientes totalmente naturales, porción sugerida, pickup o entrega por correo electrónico.',
+    locale: 'es_US',
+  },
+  {
+    route: 'es/privacy',
+    canonical: `${siteUrl}/es/privacy/`,
+    title: 'Política de privacidad | Puppy Whippies',
+    description: 'Lee cómo Puppy Whippies usa los detalles de solicitudes por correo para responder sobre disponibilidad, ingredientes y pickup o entrega en Las Vegas.',
     locale: 'es_US',
   },
 ]
@@ -156,6 +169,10 @@ const graphForPage = page => {
           name: 'Las Vegas',
           containedInPlace: { '@type': 'State', name: 'Nevada' },
         },
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          description: isSpanish ? 'Solicitudes piloto solo por correo; no hay tienda abierta al publico ni horario para visitas sin cita.' : 'Pilot requests by email only; no public storefront or walk-in hours.',
+        },
         description: isSpanish ? 'Puppy Whippies ofrece solicitudes piloto en el área de Las Vegas para premios liofilizados en lotes pequeños hechos con ingredientes totalmente naturales.' : 'Puppy Whippies offers Las Vegas area pilot requests for small-batch freeze-dried dog treats made with all-natural ingredients.',
       }
     )
@@ -188,14 +205,54 @@ const graphForPage = page => {
     const names = {
       about: 'About',
       request: 'Request Availability',
+      privacy: 'Privacy Policy',
       'es/about': 'Acerca de Puppy Whippies',
       'es/request': 'Consultar disponibilidad',
+      'es/privacy': 'Política de privacidad',
       es: 'Inicio',
     }
     graph.push(breadcrumb(names[page.route] || page.title, page.route, isSpanish))
   }
 
   return { '@context': 'https://schema.org', '@graph': graph }
+}
+
+const escapeHtml = value => String(value)
+  .replaceAll('&', '&amp;')
+  .replaceAll('<', '&lt;')
+  .replaceAll('>', '&gt;')
+  .replaceAll('"', '&quot;')
+  .replaceAll("'", '&#39;')
+
+const fallbackContent = page => {
+  const isSpanish = page.locale === 'es_US'
+  const routeKey = page.route?.replace(/^es\/?/, '') || ''
+  const blocks = {
+    '': isSpanish
+      ? ['Premios para perros liofilizados en lotes pequeños, hechos con ingredientes totalmente naturales.', 'Elige un sabor piloto en el área de Las Vegas y confirmaremos ingredientes, porción sugerida, pickup o entrega y fecha del próximo lote.']
+      : ['Small-batch freeze-dried dog treats made with all-natural ingredients.', 'Pick a pilot flavor in the Las Vegas area, and we will confirm ingredients, serving notes, pickup or delivery fit, and next batch timing.'],
+    flavors: isSpanish
+      ? ['Sabores liofilizados para perros', 'Strawberry Dream Whip, Blueberry Bliss Puff, Carrot Patch Fluff, Berry Medley Mix, Cucumber Cool Swirl y Sampler Pack están disponibles por solicitud piloto en Las Vegas.']
+      : ['Freeze-Dried Dog Treat Flavors', 'Strawberry Dream Whip, Blueberry Bliss Puff, Carrot Patch Fluff, Berry Medley Mix, Cucumber Cool Swirl, and Sampler Pack are available as Las Vegas pilot requests.'],
+    'las-vegas-dog-treats': isSpanish
+      ? ['Premios para perros en Las Vegas', 'Puppy Whippies atiende solicitudes piloto en Summerlin, Henderson, Downtown, North Las Vegas y vecindarios cercanos. Confirmamos ingredientes totalmente naturales, porción sugerida y pickup o entrega antes del pago.']
+      : ['Las Vegas Dog Treats', 'Puppy Whippies serves pilot requests around Summerlin, Henderson, Downtown, North Las Vegas, and nearby neighborhoods. We confirm all-natural ingredients, serving guidance, and pickup or delivery fit before payment.'],
+    ingredients: isSpanish
+      ? ['Ingredientes antes de recoger', 'Cada solicitud incluye confirmación de ingredientes totalmente naturales, textura liofilizada, recomendación de porción y notas de alergias o preferencias de tu mascota.']
+      : ['Ingredients Before Pickup', 'Every request includes confirmation of all-natural ingredients, freeze-dried texture, serving guidance, and allergy or preference notes for your pup.'],
+    about: isSpanish
+      ? ['Una marca de premios liofilizados en Las Vegas', 'Puppy Whippies es un proyecto piloto para familias con perros que quieren premios alegres con notas claras de ingredientes totalmente naturales.']
+      : ['A Las Vegas Area Freeze-Dried Treat Brand', 'Puppy Whippies is a playful pilot-batch project for dog-loving families who want joyful freeze-dried treats with clear all-natural ingredient notes.'],
+    request: isSpanish
+      ? ['Consultar disponibilidad', 'Inicia una solicitud piloto por correo o formulario. Confirmamos sabor, ingredientes, porción sugerida, disponibilidad en Las Vegas y si el lote actual es muestra o pickup con precio.']
+      : ['Request Availability', 'Start a pilot request by form or email. We confirm flavor, ingredients, serving notes, Las Vegas availability, and whether the current batch is a sample or priced pickup.'],
+    privacy: isSpanish
+      ? ['Política de privacidad', 'Usamos los detalles de solicitud solo para responder sobre disponibilidad, ingredientes, porción sugerida y opciones de pickup o entrega en Las Vegas.']
+      : ['Privacy Policy', 'We use request details only to reply about availability, ingredients, serving notes, and Las Vegas area pickup or delivery fit.'],
+  }
+  const [heading, body] = blocks[routeKey] || blocks['']
+
+  return `<main class="static-fallback" aria-label="${escapeHtml(heading)}"><h1>${escapeHtml(heading)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(body)}</p><p>${isSpanish ? 'Contacto' : 'Contact'}: hello@puppywhippies.com</p></main>`
 }
 
 const htmlForPage = (baseHtml, page) => {
@@ -214,6 +271,12 @@ const htmlForPage = (baseHtml, page) => {
   html = html.replace(/<meta property="og:title" content=".*?" \/>/, `<meta property="og:title" content="${page.title}" />`)
   html = html.replace(/<meta property="og:description" content=".*?" \/>/, `<meta property="og:description" content="${page.description}" />`)
   html = html.replace(/<meta property="og:image" content=".*?" \/>/, `<meta property="og:image" content="${imageUrl}" />`)
+
+  if (gscVerification && !html.includes('google-site-verification')) {
+    html = html.replace('</head>', `    <meta name="google-site-verification" content="${escapeHtml(gscVerification)}" />\n  </head>`)
+  }
+
+  html = html.replace('<div id="root"></div>', `<div id="root">${fallbackContent(page)}</div>`)
 
   if (!html.includes('property="og:url"')) {
     html = html.replace(

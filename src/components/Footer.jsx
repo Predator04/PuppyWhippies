@@ -4,7 +4,7 @@ import styles from './Footer.module.css'
 export default function Footer() {
   const { c, href } = useLanguage()
   const flavorLinks = ['/flavors/', '/flavors/', '/flavors/', '/request/'].map(href)
-  const companyLinks = ['/about/', '/las-vegas-dog-treats/', '/ingredients/', '/request/'].map(href)
+  const companyLinks = ['/about/', '/las-vegas-dog-treats/', '/ingredients/', '/request/', '/privacy/'].map(href)
 
   return (
     <footer className={styles.footer}>

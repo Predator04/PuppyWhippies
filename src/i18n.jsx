@@ -2,6 +2,21 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 const STORAGE_KEY = 'puppywhippies-language'
 const isSpanish = value => String(value || '').toLowerCase().startsWith('es')
+const isSpanishPath = path => path === '/es' || path.startsWith('/es/')
+const stripSpanishPrefix = path => path.replace(/^\/es(?=\/|$)/, '') || '/'
+const withSpanishPrefix = path => (path === '/' ? '/es/' : `/es${path}`)
+
+const navigateToLanguage = nextLanguage => {
+  const currentPath = window.location.pathname
+  const basePath = stripSpanishPrefix(currentPath)
+  const nextPath = nextLanguage === 'es' ? withSpanishPrefix(basePath) : basePath
+  const normalizedNext = nextPath.replace(/\/{2,}/g, '/')
+
+  if (normalizedNext !== currentPath) {
+    window.history.pushState({}, '', `${normalizedNext}${window.location.search}${window.location.hash}`)
+    window.dispatchEvent(new Event('puppywhippies:navigate'))
+  }
+}
 
 export const copy = {
   en: {
@@ -74,17 +89,21 @@ export const copy = {
     contact: {
       eyebrow: 'Get in Touch',
       title: ['Request', 'a', 'Flavor'],
-      body: 'Request a freeze-dried pilot flavor for your pup in the Las Vegas area. Add your neighborhood so we can confirm whether pickup or delivery is in range. No payment is collected here.',
-      info: ['Las Vegas area freeze-dried pilot batches by request', 'hello@puppywhippies.com', 'Pickup or delivery fit confirmed around Las Vegas'],
+      body: 'Request a freeze-dried pilot flavor for your pup in the Las Vegas area, including Summerlin, Henderson, Downtown, North Las Vegas, and nearby neighborhoods. We confirm current sample or pricing details by email before pickup, delivery, or payment.',
+      info: ['Las Vegas area pilot batches: Summerlin, Henderson, Downtown, North Las Vegas, and nearby neighborhoods', 'hello@puppywhippies.com', 'Sample or pricing details confirmed before pickup, delivery, or payment'],
       formTitle: 'Request Availability',
       successTitle: 'Email draft opened?',
       successBody: 'Please send the draft from your mail app. If it did not open, email',
       successTail: 'and include the details below.',
+      sentTitle: 'Request received',
+      sentBody: 'Thanks. We received your Puppy Whippies request and will reply about availability, ingredients, serving notes, and Las Vegas pickup or delivery fit.',
       clear: 'Clear Form',
+      copyDetails: 'Copy Email Details',
+      copiedDetails: 'Request details copied.',
       labels: ['Your Name', 'Email Address', 'Flavor Interest', 'Quantity Interest', 'Your Las Vegas Neighborhood', 'Desired Date', 'Pet Notes', 'Message or Request'],
       placeholders: ['Jane & Biscuit', 'jane@example.com', '1 bag', 'Summerlin, Henderson, Downtown, etc.', 'Allergies, size, preferences, or anything we should know', 'I would like to request availability for a freeze-dried pilot batch...'],
       unsure: 'Not sure yet',
-      note: 'This starts an email request only. We confirm all-natural ingredients, serving notes, Las Vegas area fit, and timing before any pickup, delivery, or payment. Your details are only used to reply about Puppy Whippies availability.',
+      note: 'This starts an email request only. We confirm all-natural ingredients, serving notes, Las Vegas area fit, timing, and whether the current pilot is a sample or priced pickup before any delivery or payment. Your details are only used to reply about Puppy Whippies availability.',
       submit: 'Start Email Request',
       autoMessage: flavor => `I would like to request availability for ${flavor}.`,
       subject: name => `Puppy Whippies request from ${name}`,
@@ -107,7 +126,7 @@ export const copy = {
       flavors: 'Flavors',
       flavorLinks: ['Flavor Lineup', 'Berry Flavors', 'Veggie Flavors', 'Request Info'],
       company: 'Company',
-      companyLinks: ['Our Story', 'Las Vegas Dog Treats', 'Ingredients', 'Contact'],
+      companyLinks: ['Our Story', 'Las Vegas Dog Treats', 'Ingredients', 'Contact', 'Privacy'],
       notes: 'Request Notes',
       noteItems: ['No payment is collected on this site.', 'All-natural ingredients are confirmed by email.', 'Las Vegas area pickup or delivery is arranged per freeze-dried batch.'],
       copyright: 'Copyright 2026 Puppy Whippies. Made with love in the Las Vegas area. All rights reserved.',
@@ -121,6 +140,7 @@ export const copy = {
       skipLink: 'Skip to content',
       flavorLineupSchema: 'Puppy Whippies Flavor Lineup',
       requestBased: 'Request-based',
+      requestOnlyHours: 'Pilot requests by email only; no public storefront or walk-in hours.',
       flavorsTitle: 'Freeze-Dried Dog Treat Flavors in Las Vegas',
       flavorsDescription: 'Explore Puppy Whippies freeze-dried dog treat flavors made with all-natural ingredients for Las Vegas area dog families, including strawberry, blueberry, carrot, berry, cucumber, and sampler requests.',
       flavorsEyebrow: 'Flavor lineup',
@@ -137,6 +157,14 @@ export const copy = {
         ['Las Vegas area fit', 'Share your neighborhood, such as Summerlin, Henderson, Downtown, or nearby areas, and we will confirm whether pickup or delivery makes sense.'],
         ['No mystery treats', 'All-natural ingredients, serving size, and pet notes are confirmed by email before pickup, delivery, or payment.'],
       ],
+      localProcessTitle: 'How local requests work',
+      localProcessItems: [
+        'Send a request with your flavor interest, neighborhood, desired timing, and any pet notes.',
+        'We reply with current freeze-dried batch details, all-natural ingredients, serving guidance, and pickup or delivery fit.',
+        'Only after the details make sense do we coordinate the next step. There is no cart or automatic checkout on the site.',
+      ],
+      localTrustTitle: 'Las Vegas service note',
+      localTrustText: 'Puppy Whippies is currently a Las Vegas area pilot-batch project, not a public storefront. Requests are handled by email first, pickup or delivery details are scheduled by reply, and there are no open walk-in hours. Availability can vary by freeze-dried batch, so confirmation keeps ingredients, timing, and local expectations clear.',
       whoTitle: 'Who Puppy Whippies is for',
       whoItems: ['Dog families in the Las Vegas area who want freeze-dried samples before choosing favorites.', 'People who want all-natural ingredient notes before serving a new treat.', 'Families planning a small pup celebration, birthday, or weekend treat pickup.'],
       ingredientsTitle: 'Dog Treat Ingredients and Serving Notes',
@@ -158,6 +186,16 @@ export const copy = {
       requestDescription: 'Request Puppy Whippies Las Vegas area freeze-dried dog treat availability and confirm flavor, all-natural ingredients, serving notes, pickup, or delivery timing by email.',
       requestEyebrow: 'Freeze-dried treat requests',
       requestLede: 'Start a Las Vegas area pilot request. No payment is collected on this site; we confirm batch details by email first.',
+      privacyTitle: 'Privacy Policy',
+      privacyDescription: 'Read how Puppy Whippies uses email request details for Las Vegas area freeze-dried dog treat availability, ingredient confirmation, and pickup or delivery replies.',
+      privacyEyebrow: 'Privacy',
+      privacyH1: 'Privacy Policy',
+      privacyLede: 'Puppy Whippies uses request details only to reply about availability, ingredients, serving notes, and Las Vegas area pickup or delivery fit.',
+      privacySections: [
+        ['What we collect', 'When you start an email request, you may share your name, email address, flavor interest, quantity interest, neighborhood, desired date, pet notes, and message.'],
+        ['How we use it', 'We use request details to reply about Puppy Whippies availability, all-natural ingredient notes, serving guidance, pickup or delivery fit, and batch timing.'],
+        ['What we do not do', 'We do not collect payment on this site, do not run a public cart, and do not sell personal request details. For privacy questions, email hello@puppywhippies.com.'],
+      ],
       faqIngredientQuestion: 'Are Puppy Whippies ingredients confirmed before pickup or delivery?',
       faqIngredientAnswer: 'Yes. Current all-natural batch ingredients and serving guidance are confirmed by email before pickup, delivery, or payment.',
       faqVetQuestion: 'Are Puppy Whippies veterinary products?',
@@ -235,17 +273,21 @@ export const copy = {
     contact: {
       eyebrow: 'Ponte en contacto',
       title: ['Consulta', 'un', 'sabor'],
-      body: 'Solicita un sabor piloto liofilizado para tu perrito en el área de Las Vegas. Agrega tu vecindario para confirmar si hay opción de pickup o entrega. No se cobra ningún pago aquí.',
-      info: ['Lotes piloto liofilizados en el área de Las Vegas por solicitud', 'hello@puppywhippies.com', 'Pickup o entrega confirmados alrededor de Las Vegas'],
+      body: 'Solicita un sabor piloto liofilizado para tu perrito en el área de Las Vegas, incluyendo Summerlin, Henderson, Downtown, North Las Vegas y vecindarios cercanos. Confirmamos por correo si el lote actual es muestra o pickup con precio antes de cualquier entrega o pago.',
+      info: ['Lotes piloto en Las Vegas: Summerlin, Henderson, Downtown, North Las Vegas y vecindarios cercanos', 'hello@puppywhippies.com', 'Detalles de muestra o precio confirmados antes del pickup, la entrega o el pago'],
       formTitle: 'Consultar disponibilidad',
       successTitle: '¿Se abrió el borrador del correo?',
       successBody: 'Por favor envía el borrador desde tu app de correo. Si no se abrió, escribe a',
       successTail: 'e incluye los detalles de abajo.',
+      sentTitle: 'Solicitud recibida',
+      sentBody: 'Gracias. Recibimos tu solicitud de Puppy Whippies y responderemos sobre disponibilidad, ingredientes, recomendación de porción y opciones de pickup o entrega en Las Vegas.',
       clear: 'Limpiar formulario',
+      copyDetails: 'Copiar detalles del correo',
+      copiedDetails: 'Detalles de solicitud copiados.',
       labels: ['Tu nombre', 'Correo electrónico', 'Sabor de interés', 'Cantidad de interés', 'Tu vecindario en Las Vegas', 'Fecha deseada', 'Notas de tu mascota', 'Mensaje o solicitud'],
       placeholders: ['Jane y Biscuit', 'jane@example.com', '1 bolsa', 'Summerlin, Henderson, Downtown, etc.', 'Alergias, tamaño, preferencias o cualquier detalle importante', 'Quisiera consultar disponibilidad para un lote piloto liofilizado...'],
       unsure: 'Todavía no estoy seguro/a',
-      note: 'Esto solo inicia una solicitud por correo electrónico. Confirmamos ingredientes totalmente naturales, recomendaciones de porción, disponibilidad en el área de Las Vegas y fecha antes del pickup, la entrega o el pago. Usamos tus datos solo para responder sobre Puppy Whippies.',
+      note: 'Esto solo inicia una solicitud por correo electrónico. Confirmamos ingredientes totalmente naturales, recomendaciones de porción, disponibilidad en Las Vegas, fecha y si el lote piloto actual es muestra o pickup con precio antes de cualquier entrega o pago. Usamos tus datos solo para responder sobre Puppy Whippies.',
       submit: 'Iniciar solicitud por correo',
       autoMessage: flavor => `Quisiera consultar disponibilidad para ${flavor}.`,
       subject: name => `Solicitud de Puppy Whippies de ${name}`,
@@ -268,7 +310,7 @@ export const copy = {
       flavors: 'Sabores',
       flavorLinks: ['Línea de sabores', 'Sabores con frutos rojos', 'Sabores con vegetales', 'Pedir información'],
       company: 'Compañía',
-      companyLinks: ['Nuestra historia', 'Premios para perros en Las Vegas', 'Ingredientes', 'Contacto'],
+      companyLinks: ['Nuestra historia', 'Premios para perros en Las Vegas', 'Ingredientes', 'Contacto', 'Privacidad'],
       notes: 'Notas de solicitud',
       noteItems: ['No se cobra ningún pago en este sitio.', 'Los ingredientes totalmente naturales se confirman por correo electrónico.', 'El pickup o la entrega en Las Vegas se coordina por lote liofilizado.'],
       copyright: 'Copyright 2026 Puppy Whippies. Hecho con cariño en el área de Las Vegas. Todos los derechos reservados.',
@@ -282,6 +324,7 @@ export const copy = {
       skipLink: 'Saltar al contenido',
       flavorLineupSchema: 'Línea de sabores Puppy Whippies',
       requestBased: 'Por solicitud',
+      requestOnlyHours: 'Solicitudes piloto solo por correo; no hay tienda abierta al público ni horario para visitas sin cita.',
       flavorsTitle: 'Sabores liofilizados para perros en Las Vegas',
       flavorsDescription: 'Explora los sabores liofilizados de Puppy Whippies, hechos con ingredientes totalmente naturales para familias con perros en el área de Las Vegas.',
       flavorsEyebrow: 'Línea de sabores',
@@ -298,6 +341,14 @@ export const copy = {
         ['Ajuste al área de Las Vegas', 'Comparte tu vecindario, como Summerlin, Henderson, Downtown o zonas cercanas, y confirmaremos si hay opción de pickup o entrega.'],
         ['Sin premios misteriosos', 'Confirmamos ingredientes totalmente naturales, porción sugerida y notas de tu mascota por correo electrónico antes del pickup, la entrega o el pago.'],
       ],
+      localProcessTitle: 'Cómo funcionan las solicitudes locales',
+      localProcessItems: [
+        'Envía una solicitud con el sabor que te interesa, tu vecindario, la fecha deseada y cualquier nota sobre tu mascota.',
+        'Respondemos con detalles del lote liofilizado actual, ingredientes totalmente naturales, recomendación de porción y si hay opción de pickup o entrega.',
+        'Solo después de confirmar que todo tiene sentido coordinamos el siguiente paso. No hay carrito ni pago automático en el sitio.',
+      ],
+      localTrustTitle: 'Nota de servicio en Las Vegas',
+      localTrustText: 'Puppy Whippies es actualmente un proyecto piloto de lotes liofilizados en el área de Las Vegas, no una tienda abierta al público. Las solicitudes se atienden primero por correo, los detalles de pickup o entrega se coordinan por respuesta y no hay horario abierto para visitas sin cita. La confirmación mantiene claros los ingredientes, la fecha y las expectativas locales.',
       whoTitle: 'Para quién es Puppy Whippies',
       whoItems: ['Familias con perros en Las Vegas que quieren probar sabores liofilizados antes de elegir favoritos.', 'Personas que quieren notas claras de ingredientes totalmente naturales antes de servir un nuevo premio.', 'Familias que planean una pequeña celebración, cumpleaños o premio especial de fin de semana para su perrito.'],
       ingredientsTitle: 'Ingredientes y recomendaciones de porción',
@@ -319,6 +370,16 @@ export const copy = {
       requestDescription: 'Solicita disponibilidad de premios liofilizados Puppy Whippies en Las Vegas y confirma sabor, ingredientes totalmente naturales, porción sugerida, pickup o entrega por correo electrónico.',
       requestEyebrow: 'Solicitudes de premios liofilizados',
       requestLede: 'Inicia una solicitud piloto en el área de Las Vegas. No se cobra ningún pago en este sitio; primero confirmamos los detalles del lote por correo electrónico.',
+      privacyTitle: 'Política de privacidad',
+      privacyDescription: 'Lee cómo Puppy Whippies usa los detalles de solicitudes por correo para responder sobre disponibilidad, ingredientes y pickup o entrega en Las Vegas.',
+      privacyEyebrow: 'Privacidad',
+      privacyH1: 'Política de privacidad',
+      privacyLede: 'Puppy Whippies usa los detalles de solicitud solo para responder sobre disponibilidad, ingredientes, recomendaciones de porción y opciones de pickup o entrega en Las Vegas.',
+      privacySections: [
+        ['Qué recopilamos', 'Cuando inicias una solicitud por correo, puedes compartir tu nombre, correo electrónico, sabor de interés, cantidad, vecindario, fecha deseada, notas de tu mascota y mensaje.'],
+        ['Cómo lo usamos', 'Usamos los detalles de la solicitud para responder sobre disponibilidad de Puppy Whippies, ingredientes totalmente naturales, recomendaciones de porción, pickup o entrega y fecha del lote.'],
+        ['Lo que no hacemos', 'No cobramos pagos en este sitio, no tenemos carrito público y no vendemos los detalles personales de las solicitudes. Para preguntas de privacidad, escribe a hello@puppywhippies.com.'],
+      ],
       faqIngredientQuestion: '¿Se confirman los ingredientes de Puppy Whippies antes del pickup o la entrega?',
       faqIngredientAnswer: 'Sí. Los ingredientes totalmente naturales del lote actual y las recomendaciones de porción se confirman por correo electrónico antes del pickup, la entrega o el pago.',
       faqVetQuestion: '¿Puppy Whippies son productos veterinarios?',
@@ -332,23 +393,54 @@ const LanguageContext = createContext(null)
 
 export function LanguageProvider({ children }) {
   const [language, setLanguageState] = useState(() => {
-    if (window.location.pathname === '/es' || window.location.pathname.startsWith('/es/')) return 'es'
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved === 'en' || saved === 'es') return saved
-    const languages = navigator.languages?.length ? navigator.languages : [navigator.language]
-    return languages.some(isSpanish) ? 'es' : 'en'
+    return isSpanishPath(window.location.pathname) ? 'es' : 'en'
   })
 
   useEffect(() => {
     document.documentElement.lang = language
-    localStorage.setItem(STORAGE_KEY, language)
   }, [language])
+
+  useEffect(() => {
+    const onNavigate = () => {
+      const nextLanguage = isSpanishPath(window.location.pathname) ? 'es' : 'en'
+      setLanguageState(nextLanguage)
+      localStorage.setItem(STORAGE_KEY, nextLanguage)
+    }
+    window.addEventListener('popstate', onNavigate)
+    window.addEventListener('puppywhippies:navigate', onNavigate)
+    return () => {
+      window.removeEventListener('popstate', onNavigate)
+      window.removeEventListener('puppywhippies:navigate', onNavigate)
+    }
+  }, [])
+
+  useEffect(() => {
+    const saved = localStorage.getItem(STORAGE_KEY)
+    const languages = navigator.languages?.length ? navigator.languages : [navigator.language]
+    const shouldUseSpanish = saved === 'es' || (!saved && languages.some(isSpanish))
+
+    if (shouldUseSpanish && !isSpanishPath(window.location.pathname)) {
+      navigateToLanguage('es')
+      setLanguageState('es')
+      localStorage.setItem(STORAGE_KEY, 'es')
+    }
+  }, [])
 
   const value = useMemo(() => ({
     language,
     isSpanish: language === 'es',
-    setLanguage: setLanguageState,
-    toggleLanguage: () => setLanguageState(current => (current === 'es' ? 'en' : 'es')),
+    setLanguage: nextLanguage => {
+      const safeLanguage = nextLanguage === 'es' ? 'es' : 'en'
+      navigateToLanguage(safeLanguage)
+      setLanguageState(safeLanguage)
+      localStorage.setItem(STORAGE_KEY, safeLanguage)
+    },
+    toggleLanguage: () => {
+      const nextLanguage = language === 'es' ? 'en' : 'es'
+      navigateToLanguage(nextLanguage)
+      setLanguageState(nextLanguage)
+      localStorage.setItem(STORAGE_KEY, nextLanguage)
+    },
     href: path => {
       if (language !== 'es') return path
       if (path === '/') return '/es/'

@@ -91,6 +91,10 @@ export function LocalDogTreatsPage() {
         name: 'Las Vegas',
         containedInPlace: { '@type': 'State', name: 'Nevada' },
       },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        description: c.pages.requestOnlyHours,
+      },
       description: c.pages.localBusinessDescription,
     },
   ]
@@ -114,6 +118,20 @@ export function LocalDogTreatsPage() {
                 <p>{body}</p>
               </article>
             ))}
+          </div>
+        </section>
+        <section className={styles.section}>
+          <div className={styles.twoCol}>
+            <article className={styles.card}>
+              <h2>{c.pages.localProcessTitle}</h2>
+              <ul className={styles.list}>
+                {c.pages.localProcessItems.map(item => <li key={item}>{item}</li>)}
+              </ul>
+            </article>
+            <article className={styles.card}>
+              <h2>{c.pages.localTrustTitle}</h2>
+              <p>{c.pages.localTrustText}</p>
+            </article>
           </div>
         </section>
         <section className={styles.section}>
@@ -206,6 +224,32 @@ export function RequestPage() {
         <Breadcrumbs current={c.pages.requestAvailability} />
         <PageHero eyebrow={c.pages.requestEyebrow} title={c.pages.requestAvailability} lede={c.pages.requestLede} />
         <Contact />
+      </main>
+    </>
+  )
+}
+
+export function PrivacyPage() {
+  const { c, language } = useLanguage()
+  const path = '/privacy'
+  const schema = [breadcrumbSchema([{ name: c.pages.breadcrumbsHome, path: '/' }, { name: c.pages.privacyTitle, path }], language)]
+
+  return (
+    <>
+      <SEO title={c.pages.privacyTitle} description={c.pages.privacyDescription} path={path} schema={schema} />
+      <main id="main" tabIndex="-1" className={styles.page}>
+        <Breadcrumbs current={c.pages.privacyTitle} />
+        <PageHero eyebrow={c.pages.privacyEyebrow} title={c.pages.privacyH1} lede={c.pages.privacyLede} />
+        <section className={styles.section}>
+          <div className={styles.grid}>
+            {c.pages.privacySections.map(([title, body]) => (
+              <article className={styles.card} key={title}>
+                <h2>{title}</h2>
+                <p>{body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       </main>
     </>
   )

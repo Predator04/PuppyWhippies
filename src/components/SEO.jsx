@@ -14,12 +14,25 @@ const setMeta = (selector, attrs) => {
   Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value))
 }
 
+const setAlternate = (hreflang, href) => {
+  let el = document.head.querySelector(`link[rel="alternate"][hreflang="${hreflang}"]`)
+  if (!el) {
+    el = document.createElement('link')
+    el.rel = 'alternate'
+    el.hreflang = hreflang
+    document.head.appendChild(el)
+  }
+  el.href = href
+}
+
 export default function SEO({ title, description, path = '/', schema = [] }) {
   const { language } = useLanguage()
 
   useEffect(() => {
     const prefix = language === 'es' && window.location.pathname.startsWith('/es') ? '/es' : ''
     const canonicalUrl = `${SITE_URL}${prefix}${path === '/' ? '/' : `${path}/`}`
+    const englishUrl = `${SITE_URL}${path === '/' ? '/' : `${path}/`}`
+    const spanishUrl = `${SITE_URL}/es${path === '/' ? '/' : `${path}/`}`
     const fullTitle = title.includes('Puppy Whippies') ? title : `${title} | Puppy Whippies`
     const graph = [
       {
@@ -56,6 +69,9 @@ export default function SEO({ title, description, path = '/', schema = [] }) {
       document.head.appendChild(canonical)
     }
     canonical.href = canonicalUrl
+    setAlternate('en-US', englishUrl)
+    setAlternate('es-US', spanishUrl)
+    setAlternate('x-default', englishUrl)
 
     let jsonLd = document.getElementById('seo-jsonld')
     if (!jsonLd) {

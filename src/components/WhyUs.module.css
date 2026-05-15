@@ -113,7 +113,7 @@
 .stats {
   background:
     linear-gradient(180deg, rgba(255,255,255,0.34) 0 18%, transparent 19%),
-    linear-gradient(135deg, #cf0054 0%, #6a20bd 58%, #046c82 100%);
+    linear-gradient(135deg, #b90049 0%, #5a16b2 58%, #312064 100%);
   border-radius: 34px;
   padding: clamp(24px, 3vh, 44px) clamp(20px, 3vw, 60px);
   display: grid;

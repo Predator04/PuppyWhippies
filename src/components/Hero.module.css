@@ -209,7 +209,7 @@
   border-radius: 999px;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.48) 0 18%, transparent 19%),
-    linear-gradient(135deg, #cf0054 0%, #6a20bd 72%, #046c82 100%);
+    linear-gradient(135deg, #b90049 0%, #5a16b2 72%, #312064 100%);
   border: 3px solid var(--sticker);
   box-shadow: 0 8px 0 #8C0036, 0 14px 0 rgba(53,16,97,0.22), 0 22px 34px rgba(240,82,122,0.38);
   transition: transform 0.15s, box-shadow 0.15s;

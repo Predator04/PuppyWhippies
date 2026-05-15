@@ -10,6 +10,12 @@ Puppy Whippies is a Las Vegas area pilot-batch freeze-dried dog treat brand. The
 - Ingredients and serving notes: https://puppywhippies.com/ingredients/
 - About Puppy Whippies: https://puppywhippies.com/about/
 - Request availability: https://puppywhippies.com/request/
+- Privacy policy: https://puppywhippies.com/privacy/
+- Spanish home: https://puppywhippies.com/es/
+- Spanish flavors: https://puppywhippies.com/es/flavors/
+- Spanish Las Vegas dog treats: https://puppywhippies.com/es/las-vegas-dog-treats/
+- Spanish ingredients: https://puppywhippies.com/es/ingredients/
+- Spanish request availability: https://puppywhippies.com/es/request/
 
 ## Current Flavor Concepts
 
@@ -25,4 +31,6 @@ Puppy Whippies is a Las Vegas area pilot-batch freeze-dried dog treat brand. The
 - Service area: Las Vegas area, with pickup or delivery fit confirmed per request.
 - Contact: hello@puppywhippies.com
 - Buying process: visitors request availability by email; all-natural ingredients, serving notes, timing, and local fit are confirmed before any pickup, delivery, or payment.
+- Local availability: Puppy Whippies is not a public storefront yet. It is a pilot-batch request process for the Las Vegas area.
+- Language support: English and Spanish pages are available with matching hreflang alternates.
 - Safety note: Puppy Whippies treats are not veterinary products. Pet owners should supervise dogs while serving treats and review ingredients for household-specific concerns.
